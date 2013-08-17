@@ -153,13 +153,14 @@ header {
 		font-family:'Open Sans', sans-serif;
 		font-weight: bold;
 		li {
+
 			margin-right: 10px;
 			font-size: 18px;
 			text-transform: uppercase;
 
 			a {
 				color: #777;
-
+				-webkit-transition: all 0.4s ease-in-out;
 				&:hover {
 					color: #72C02C;
 				}

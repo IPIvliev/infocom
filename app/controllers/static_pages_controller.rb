@@ -11,6 +11,7 @@ class StaticPagesController < ApplicationController
   def about_us
   end
 
-  def arcitles
+  def articles
   end
+
 end

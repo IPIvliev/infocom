@@ -30,16 +30,22 @@
 				</div>
 				<div class="span8">
 					<ul class="nav nav-pills">
-						<li class="active">
-							<a href="#">.::Домой</a>
+						<li class="<%=is_active('index')%>">
+							<%= link_to ".::Главная", root_path %>
 						</li>
-						<li>
-							<a href="#">.::О нас</a>
+						<li class="<%=is_active('about_us')%>">
+							<%= link_to ".::О нас", about_us_path %>
 						</li>
-						<li>
-							<a href="#">.::Услуги</a>
+						<li class="<%=is_active('services')%>">
+							<%= link_to ".::Услуги", services_path %>
 						</li>
-						<li>
+						<li class="<%=is_active('aricles')%>">
+							<%= link_to ".::Блог", articles_path %>
+						</li>
+						<li class="<%=is_active('contacts')%>">
+							<%= link_to ".::Контакты", contacts_path %>
+						</li>
+						<li class="<%=is_active('search')%>">
 							<a class="search">
 								<i class="icon-search search-btn"></i>
 							</a>

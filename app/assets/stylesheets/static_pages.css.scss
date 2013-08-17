@@ -1,3 +1,256 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.margin-bottom-40 {
+margin-bottom: 40px;
+}
+
+.margin-bottom-60 {
+margin-bottom: 60px;
+}
+
+.color-green {
+color: #72C02C;
+}
+
+.btn-u {
+border: 0;
+font-size: 14px;
+cursor: pointer;
+padding: 5px 13px;
+position: relative;
+background: #72C02C;
+display: inline-block;
+color: white !important;
+text-decoration: none !important;
+-webkit-transition: all 0.4s ease-in-out;
+-moz-transition: all 0.4s ease-in-out;
+-o-transition: all 0.4s ease-in-out;
+transition: all 0.4s ease-in-out;
+
+&:hover {
+	background: #68af28;
+}
+}
+
+//About us
+
+.breadcrumbs {
+padding: 10px 0 6px;
+box-shadow: inset 0 0 4px #eee;
+background: url(/assets/breadcrumbs.png) repeat;
+
+h1 {
+color: #686868;
+font-size: 30px;
+text-shadow: 0 1px 0 #F1EFEF;
+}
+
+.breadcrumb {
+	
+top: 9px;
+padding-right: 0;
+background: none;
+position: relative;
+
+ li.active, li a:hover {
+color: #72C02C;
+text-decoration: none;
+}
+
+}
+
+}
+
+// Our team
+
+.team {
+	p, a, li {
+color: #555;
+line-height: 1.6;
+
+ul {
+text-align: right;
+
+li {
+padding: 0 !important;
+margin: 0 !important;
+
+i {
+color: #AAA;
+font-size: 20px;
+padding: 4px;
+background: #F7F7F7;
+}
+
+a, a:hover {
+text-decoration: none;
+
+
+}
+
+a:hover {
+i {
+color: #fff;
+background: #72C02C;
+}
+
+
+
+}
+}
+}
+}
+
+
+.thumbnail-style {
+padding: 12px;
+
+small {
+display: block;
+font-size: 12px;
+}
+
+h3 {
+margin-bottom: 10px;
+
+a {
+font-size: 20px;
+}
+}
+}
+}
+
+
+
+// Pricing
+
+.hover-effect {
+-webkit-transition: all 0.4s ease-in-out;
+-moz-transition: all 0.4s ease-in-out;
+-o-transition: all 0.4s ease-in-out;
+transition: all 0.4s ease-in-out;
+
+&:hover {
+	-webkit-transform: scale(1.1) rotate(0deg);
+	-moz-transform: scale(2) rotate(5deg);
+	-o-transform: scale(2) rotate(5deg);
+	-ms-transform: scale(2) rotate(5deg);
+	transform: scale(2) rotate(5deg);
+	box-shadow:0 0 12px #000;
+}
+}
+
+.pricing {
+position: relative;
+border-radius: 3px;
+margin-bottom: 15px;
+box-shadow: 0 0 5px #eee;
+
+.pricing-head {
+text-align: center;
+
+h3, h4 {
+	margin: 0;
+line-height: normal;
+font-weight: bold !important;
+
+span {
+display: block;
+margin-top: 5px;
+font-size: 12px;
+font-style: italic;
+}
+
+}
+
+h3 {
+background: #55C931;
+text-shadow: 0 1px 0 #32A20F;
+border-bottom: solid 1px #41B91C;
+color: #FAFAFA;
+padding: 12px 0;
+font-size: 35px;
+font-family: Arial;
+border-radius: 3px 3px 0 0;
+}
+
+h4 {
+color: #BAC39F;
+padding: 5px 0;
+font-size: 70px;
+font-family: Arial;
+background: #FBFEF2;
+text-shadow: 0 1px 0 white;
+border-bottom: solid 1px #F5F9E7;
+color: #999;
+background: #FBFEF2;
+border-bottom: solid 1px #F5F9E7;
+span {
+top: -10px;
+font-size: 14px;
+font-style: normal;
+position: relative;
+}
+i {
+top: -8px;
+font-size: 28px;
+font-style: normal;
+position: relative;
+}
+}
+}
+
+.pricing-content {
+	li {
+color: #888;
+font-size: 12px;
+padding: 7px 15px;
+border-bottom: solid 1px #F5F9E7;
+
+i {
+top: 2px;
+color: #72C02C;
+font-size: 16px;
+margin-right: 5px;
+position: relative;
+}
+}
+}
+
+.pricing-footer {
+color: #777;
+font-size: 11px;
+line-height: 17px;
+text-align: center;
+padding: 0 20px 19px;
+border-radius: 0 0 3px 3px;
+
+a, button {
+color: white;
+border: none;
+margin-top: 5px;
+font-size: 16px;
+padding: 6px 15px;
+text-align: center;
+border-radius: 2px;
+background: #72C02C;
+display: inline-block;
+text-transform: uppercase;
+text-shadow: 0 1px 0 #38B312;
+border-bottom: solid 2px #41B91C;
+}
+}
+
+}
+
+// Contacts
+
+.map {
+width: 100%;
+height: 350px;
+border-top: solid 1px #EEE;
+border-bottom: solid 1px #EEE;
+}

@@ -1,7 +1,86 @@
 <% provide(:title, 'Контакты') %>
-<h1>Sample App</h1>
-<p>
-  This is the home page for the
-  <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-  sample application.
-</p>
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs">
+	<div class="container">
+        <h1 class="color-green pull-left">Контакты ООО "Инфоком-НН"</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Главная</a> <span class="divider">/</span></li>
+            <li class="active">Контакты</li>
+        </ul>
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+
+<!-- Google Map -->
+<div id="map" class="map margin-bottom-40">
+</div><!---/map-->
+<!-- End Google Map -->
+
+
+<!--=== Content Part ===-->
+<div class="container">		
+	<div class="row-fluid">
+		<div class="span9">
+            <div class="headline"><h3>Контакты ООО "Инфоком-НН"</h3></div>
+            <p>Отправьте своё сообщение сюда. Наш менеджер свяжется с вами в самое ближайшее время. Если что, то форма почти работает.</p><br />
+			<form />
+                <label>Имя</label>
+                <input type="text" class="span7 border-radius-none" />
+                <label>E-mail <span class="color-red">*</span></label>
+                <input type="text" class="span7 border-radius-none" />
+                <label>Сообщение</label>
+                <textarea rows="8" class="span10"></textarea>
+                <p><button type="submit" class="btn-u">Отправить</button></p>
+            </form>
+        </div><!--/span9-->
+        
+		<div class="span3">
+        	<!-- Contacts -->
+            <div class="headline"><h3>Адрес</h3></div>
+            <ul class="unstyled who margin-bottom-20">
+                <li><i class="icon-home"></i>603000, г. Нижний Новгород, ул. Бекетова, 15, оф. 4</li>
+                <li><i class="icon-envelope-alt"></i>infocom-nn@yandex.ru</li>
+                <li><i class="icon-phone-sign"></i>414-19-89</li>
+                <li><a href="http://www.infotechcom.ru"><i class="icon-globe"></i>http://www.infotechcom.ru</a></li>
+            </ul>
+
+        	<!-- Business Hours -->
+            <div class="headline"><h3>Время работы</h3></div>
+            <ul class="unstyled">
+            	<li><strong>Понедельник-Пятница:</strong> с 10:00 до 20:00 </li>
+            	<li><strong>Суббота:</strong> с 11:00 до 17:00 </li>
+            	<li><strong>Воскресенье:</strong> Выходной</li>
+            </ul>
+
+        	<!-- Why we are? -->
+            <div class="headline"><h3>Почему мы?</h3></div>
+            <p>Аргументы, с чего это вдруг, даже если ему не надо, потенциальный клиент выберет именно нас.</p>
+            <ul class="unstyled">
+            	<li><i class="icon-ok color-green"></i> Красивые</li>
+            	<li><i class="icon-ok color-green"></i> Умные</li>
+            	<li><i class="icon-ok color-green"></i> В белом пальто</li>
+            </ul>
+        </div><!--/span3-->
+    </div><!--/row-fluid-->   
+</div>
+
+ <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+<script type="text/javascript">
+  ymaps.ready(init);
+    var myMap,
+        myPlacemark;
+
+    function init(){     
+        myMap = new ymaps.Map ("map", {
+            center: [56.290711, 44.000145],
+            zoom: 16,
+        });
+
+        myPlacemark = new ymaps.Placemark([56.290711, 44.000145], { 
+            hintContent: 'Нижний Новгород, ул. Бекетова, д.15, оф.4', 
+            balloonContent: 'ООО Инфоком-НН' 
+        });
+
+        myMap.geoObjects.add(myPlacemark);
+    }
+</script>

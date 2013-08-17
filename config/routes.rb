@@ -1,13 +1,15 @@
 Infocom::Application.routes.draw do
-  get "static_pages/index"
 
-  get "static_pages/contacts"
 
-  get "static_pages/services"
+  get "index.html" => "static_pages#index"
 
-  get "static_pages/about_us"
+  match "/contacts", to: 'static_pages#contacts'
 
-  get "static_pages/arcitles"
+  match "/services", to: 'static_pages#services'
+
+  match "/about_us", to: 'static_pages#about_us'
+
+  match "/articles", to: 'static_pages#articles'
 
   root to: 'static_pages#index'
 
