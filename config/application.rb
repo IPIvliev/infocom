@@ -1,10 +1,5 @@
 require File.expand_path('../boot', __FILE__)
 
-class ApplicationController < ActionController::Base
-  def default_url_options(options = nil)
-    {:format => "html"}
-  end
-end
 
 require 'rails/all'
 
@@ -16,11 +11,7 @@ if defined?(Bundler)
 end
 
 module Infocom
-  class Application < Rails::Application
 
-      def default_url_options(options = nil)
-    {:format => "html"}
-  end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
