@@ -1,0 +1,33 @@
+<li>
+  <%= gravatar_for user, size: 52 %>
+  <%= link_to user.name, user %> /
+  <%= user.email %> /
+  <%= user.agent.name %> /
+
+      <% if user.manager? %>
+      <strong class="manager"> Менеджер </strong>
+    <% elsif user.admin? %>
+      <strong class="admin"> Администратор </strong>
+    <% else %>
+      <strong> Пользователь </strong>
+    <% end %>
+
+  <% if current_user.admin? && !current_user?(user) %>
+    | <%= link_to "delete", user, method: :delete,
+                                  data: { confirm: "Вы уверены?" } %>
+  <% end %>
+  <% if current_user.admin? && !current_user?(user) %>
+ 	<% if user.manager? %>
+	|	<%= link_to "Разжаловать из менеджеров", man_user_path(user), method: :put %>
+	<% else %>
+	|	<%= link_to "Назвачить менеджером", man_user_path(user), method: :put %>
+	<% end %>  
+  <% if user.admin? %>
+  | <%= link_to "Разжаловать из администраторов", adm_user_path(user), method: :put %>
+  <% else %>
+  | <%= link_to "Назвачить администратором", adm_user_path(user), method: :put %>
+  <% end %> 
+  <% end %>
+
+
+</li>

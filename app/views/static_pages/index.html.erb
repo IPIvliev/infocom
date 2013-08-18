@@ -32,17 +32,28 @@
         </script>   
 
 <!-- Zakaz -->
+<% if signed_in? %>
+<br><br>
+    <%= render 'shared/usermenu' %>
+<% else %>
 <div class="row-fluid purchase margin-bottom-30">
     <div class="container">
-		<div class="span9">
+		<div class="span7">
             <span>Получите наше коммерческое предложение</span>
             <p>Нажав на кнопку и заполнив поле с вашей электронной почтой  течении 3 минут вы получите наше коммерческое предложение с подробным описанием предоставляемых услуг. Быстро и качественно - вот дивиз "Инфоком-НН".</p>
         </div>
-        <a href="#" class="btn-buy hover-effect">Сделать заказ</a>
+        <form class="center" />
+            <div class="input-append top-10 center">
+            <input type="text" placeholder="Адрес почты" class="huge plus" />
+
+            <a class="btn-u hover-effect huge">Получить предложение</a>
+            </div>
+        </form>
+    
     </div>
 </div><!--/row-fluid-->
 <!-- End Purchase Block -->
-
+<% end %>
 <!-- Services -->
 <div class="container">	
 
@@ -162,7 +173,7 @@
 
 
 <!-- Our Clients -->
-    <div class="flexslider">
+    <div class="flexslider ">
         <div class="headline"><h3>Наши клиенты</h3></div>    
         <ul class="slides">
             <li>
@@ -217,4 +228,19 @@
     </div><!--/flexslider-->
     <!-- //End Our Clients -->
 
+
+
+
 </div>
+
+<!-- Zakaz -->
+<div class="row-fluid purchase top-40 margin-bottom-30">
+    <div class="container">
+        <div class="span9">
+            <span>Вход для клиентов</span>
+            <p>Уникальным приемуществом "Инфоком-НН" является интерактивное взаимодействие со всеми сотрудниками наших клиентов. Личный кабинет комании-клиента включает в себя неограниченное количество пользователей. Каждый из них может нарямую подать заявку на обслуживание компьютера и наш специалист свяжется с ним в самое ближайшее время!</p>
+        </div>
+        <%= link_to "Служебный вход", signin_path, :class => "btn-buy hover-effect" %>
+    </div>
+</div><!--/row-fluid-->
+<!-- End Purchase Block -->

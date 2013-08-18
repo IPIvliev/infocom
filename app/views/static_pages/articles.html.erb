@@ -11,5 +11,9 @@
     </div><!--/container-->
 </div><!--/breadcrumbs-->
 <!--=== End Breadcrumbs ===-->
-
+<div class="container">
+	<% if signed_in? %>
+        <%= render 'shared/usermenu' %>
+    <% end %>
 Страница в разработке.
+</div>

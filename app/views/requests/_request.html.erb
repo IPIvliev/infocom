@@ -1,0 +1,33 @@
+<tr>
+  <td rowspan="2">
+    <%= request.id %>
+  </td>
+  <td>
+    <%= Russian::strftime(request.created_at, "%d %b %Y") %>
+  </td>
+  <td rowspan="2">
+
+<% if current_user.admin? || current_user.manager? %>
+
+  <% if request.finish == true %>
+    <%= link_to "Закрыта", fin_request_path(request), method: :put %>
+  <% else %>
+    <%= link_to "В работе", fin_request_path(request), method: :put %>
+  <% end %>
+
+<% else %>
+
+  <% if request.finish == true %>
+    Закрыта
+  <% else %>
+    В работе
+  <% end %>
+<% end %>
+  </td>
+</tr>
+<tr>
+  <td colspan="5"><strong>Тема заявки: </strong><%= request.text %></td>
+</tr>
+<tr>
+  <td colspan="7"></td>
+</tr>

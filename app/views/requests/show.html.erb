@@ -1,0 +1,43 @@
+<% provide(:title, @agent.name) %>
+<div class="row">
+
+  <aside class="span4">
+    <section>
+
+ 			<ul class="nav nav-tabs nav-stacked">
+        	 <li><%= link_to "Все организации", agents_path %></li>
+        	 <li><%= link_to "Добавить организацию", new_agent_path %></li>
+        	</ul>
+
+    </section>
+
+
+<%= link_to 'Изменить', edit_agent_path(@agent), 
+   								  :class => 'btn btn-primary btn-warning' %>
+
+<%= link_to 'удалить', @agent, method: :delete,
+   								  :class => 'btn btn-primary btn-danger',
+                                  data: { confirm: "You sure?" } %>
+
+  </aside>
+
+
+ <div class="span8">
+      <h1> <%= @house.name %> </h1>
+
+<strong>Координаты:</strong>
+	<div class="well well-small">
+	 <strong>Адрес:</strong>
+	 	<% if @agent.address? %>
+	 	<%= @agent.address %> 
+		 <% else %>
+	 	нет
+	 	<% end %>
+	 <strong>Телефон:</strong> <%= @agent.phone %>
+	 <strong>E-mail:</strong> <%= @agent.e_mail %>
+	</div>
+
+
+
+ </div>
+</div>

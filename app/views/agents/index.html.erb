@@ -1,0 +1,28 @@
+<% provide(:title, 'Все организации') %>
+
+<% if signed_in? %>
+<!--=== Breadcrumbs ===-->
+<div class="row-fluid breadcrumbs margin-bottom-20">
+  <div class="container">
+        <h1 class="pull-left">Все организации</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Главная</a> <span class="divider">/</span></li>
+            <li class="active">Все организации</li>
+        </ul>
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+<div class="container">
+    <%= render 'shared/usermenu' %>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <%= render @agents %>
+</ul>
+
+<%= will_paginate %>
+
+<% end %>
+
+</div>

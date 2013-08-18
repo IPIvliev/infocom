@@ -1,0 +1,60 @@
+<% provide(:title, "Регистрация для клиентов") %>
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-40">
+  <div class="container">
+        <h1 class="color-green pull-left">Регистрация нового пользователя</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Главная</a> <span class="divider">/</span></li>
+            <li class="active">Регистрация</li>
+        </ul>
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+
+<div class="container"> 
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+      <% end %>
+  
+<div class="row-fluid margin-bottom-10">
+
+    <%= form_for(@user, :html => {:class => 'reg-page'}) do |f| %>
+    <h3>Регистрация</h3>
+      <%= render 'shared/error_messages', object: f.object %>
+<div class="controls">
+      <%= f.label :name, "Ваше имя" %>
+      <%= f.text_field :name, :class => "span12" %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email, :class => "span12" %>
+
+      <%= f.label :agent_id, "Наименование организации, в которой Вы работаете" %>
+      <%= collection_select(:user, :agent_id, Agent.all, :id, :name) %>
+
+      <%= f.label :phone, "РАБОЧИЙ телефон" %>
+      <%= f.text_field :phone, :class => "span12" %>
+
+      <%= f.label :address, "РАБОЧИЙ адрес:" %>
+      <%= f.text_field :address, :class => "span12" %>
+    </div>
+<div class="controls">
+  <div class="span6">
+      <%= f.label :password, "Пароль" %>
+      <%= f.password_field :password, :class => "span12" %>
+</div>
+<div class="span6">
+      <%= f.label :password_confirmation, "Повторите пароль" %>
+      <%= f.password_field :password_confirmation, :class => "span12" %>
+</div>
+
+
+</div>
+                <div class="controls form-inline">
+
+   <%= f.submit "Создать аккаунт", class: "btn-u pull-right" %>
+                </div>
+                <hr />
+        <p>Уже зарегистрировались? Нажмите <%= link_to "Вход", signin_path, :class => "color-green" %> для подачи заявки.</p>
+            <% end %>
+</div>
+</div>

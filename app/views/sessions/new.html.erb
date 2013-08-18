@@ -1,0 +1,43 @@
+<% provide(:title, "Служебный вход") %>
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-40">
+  <div class="container">
+        <h1 class="color-green pull-left">Служебный вход</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Главная</a> <span class="divider">/</span></li>
+            <li class="active">Вход</li>
+        </ul>
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">   
+        <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+    <% end %>
+  <div class="row-fluid">
+        <%= form_for(:session, url: sessions_path,  :html => {:class => 'log-page'}) do |f| %>
+        
+            <h3>Войдите в Ваш аккаунт</h3>    
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-user"></i></span>
+                      <%= f.text_field :email, :placeholder => "Ваш e-mail", :class => "input-xlarge" %>
+        
+            </div>
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-lock"></i></span>
+                <%= f.password_field :password, :placeholder => "Ваш пароль", :class => "input-xlarge" %>
+            </div>
+            <div class="controls form-inline">
+                <label class="checkbox"><input type="checkbox" />  Не выходить</label>
+                <%= f.submit "Войти", :class => "btn-u pull-right" %>
+ 
+            </div>
+            <hr />
+            <h4>Ещё не зарегистрировались?</h4>
+            <p>Не беда,  <%= link_to "нажмите сюда", signup_path, :class => "color-green" %> для регистрации.</p>
+    <% end %>
+    </div><!--/row-fluid-->
+</div><!--/container-->   
+<!--=== End Content Part ===-->

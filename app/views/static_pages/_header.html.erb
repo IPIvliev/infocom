@@ -13,7 +13,14 @@
 	            <li class="devider">&nbsp;</li>
 	            <li><a href="page_faq.html" class="login-btn">Помощь</a></li>  
 	            <li class="devider">&nbsp;</li>
-	            <li><a href="page_login.html" class="login-btn">Логин</a></li>   
+	            <% if signed_in? %>
+	            <li><%= link_to "Личный кабинет", requests_path %></li>
+	            <li class="devider">&nbsp;</li>
+	            <li><%= link_to "Выход", signout_path, method: "delete" %></li>
+	               
+	            <% else %>
+	            <li><%= link_to "Логин", signin_path, :class => "login-btn" %></li>
+	            <% end %>
 	        </ul>
 	    </div>      
 	</div>   
@@ -23,8 +30,8 @@
     		<div class="row-fluid">
 				<div class="span4">
 					<div class="logo">                                             
-						<a href="index.html">
-							<img id="logo-header" src="assets/logo_dark.png" alt="Logo" />
+						<a href="/index.html">
+							<img id="logo-header" src="/assets/logo_dark.png" alt="Logo" />
 						</a>
 					</div>   
 				</div>

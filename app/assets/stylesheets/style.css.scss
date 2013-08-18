@@ -3,6 +3,8 @@
 
 @import "bootstrap";
 
+
+
 /*body */
 body {
 	color: #333;
@@ -58,6 +60,26 @@ body {
 	padding:30px 0 20px;
 	box-shadow:inset 0 0 4px #eee;
 	background:url(/assets/breadcrumbs.png) repeat;
+
+	.huge {
+		font-size: 16px;
+		width: 100%;
+
+		font-weight:bold;
+			padding:12px 28px 9px;
+	text-transform:uppercase;
+	text-shadow:0 1px 0 #51a00b;
+
+	}
+
+	.plus {
+		display: block;
+	}
+
+	.center {
+		text-align: center;
+	}
+
 }
 .purchase .container {
 	padding:0 20px;
@@ -146,7 +168,7 @@ body {
 /*Flexslyder - Our clients*/
 
 	.flexslider {
-
+		margin-bottom: 20px;
 		ul {
 			width: 100%;
 			li {
@@ -172,4 +194,32 @@ width: 200px;
 margin: 5px 20px 5px 0;
 }
 
+}
+
+
+// Log in
+.log-page {
+width: 310px;
+padding: 20px;
+margin: 0 auto;
+background: #FCFCFC;
+border: solid 1px #EEE;
+box-shadow: 0 0 7px #eee;
+}
+
+// Registration
+
+.reg-page {
+overflow: hidden;
+margin: 0 auto;
+background: #FCFCFC;
+border: solid 1px #EEE;
+box-shadow: 0 0 7px #eee;
+min-width: 30%;
+max-width: 30%;
+padding: 30px 50px 30px;
+
+h3 {
+margin-bottom: 25px;
+}
 }

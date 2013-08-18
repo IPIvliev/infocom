@@ -1,0 +1,111 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$grayLighter: #eaeaea;
+
+$green: #72C02C;
+$yellow: #ffbf00;
+$red: #960018;
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.manager {
+	color: $yellow;
+}
+
+.admin {
+	color: $red;
+}
+
+.stats {
+  overflow: auto;
+  a {
+
+    padding: 0 5px;
+    color: gray;
+    &:hover {
+      text-decoration: none;
+      color: $green;
+    }
+  }
+  strong {
+
+  }
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+  }
+}
+
+aside {
+  section {
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 5px;
+      line-height: 1;
+
+      a {
+      	&:hover {
+      		color: $green;
+      		text-decoration: none;
+      	}
+      }
+    }
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+    }
+  }
+}
+
+.gravatar {
+  float: left;
+  width: 25%;
+  margin-right: 10px;
+}
+
+.navbar .brand {
+float: left;
+display: block;
+padding: 5px 15px;
+margin-left: -20px;
+font-size: 20px;
+font-weight: 200;
+color: #777;
+text-shadow: 0 1px 0 white;
+}
+
+/* users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  .gravatar {
+  float: left;
+  width: 5%;
+  margin-right: 10px;
+}
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+<% @user ||= current_user %>
+<div class="stats">
+<h4>Заявки</h4>
+
+<% if current_user.admin? || current_user.manager? %>
+<span><strong>Выполнено:</strong>
+  <a href="#">12</a>
+</span>
+<span><strong>В работе:</strong>
+  <a href="#">12</a>
+</span>
+<% else %>
+<span><strong>Подано заявок:</strong>
+  <a href="#">12</a>
+</span>
+<% end %>
+
+</div>
+
+<hr>
+<span>Организация:
+    <a href="#">
+    <strong>
+      <%= current_user.agent.name %>
+    </strong>
+  </a>
+</span>
+
+<span>Статус: 
+  <a href="#">
+    <% if current_user.manager? %>
+      <strong class="manager"> Менеджер </strong>
+    <% elsif current_user.admin? %>
+      <strong class="admin"> Администратор </strong>
+    <% else %>
+      <strong> Пользователь </strong>
+    <% end %>
+  </a>
+</span>

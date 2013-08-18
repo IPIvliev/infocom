@@ -1,0 +1,47 @@
+<% @user ||= current_user %>
+<div class="container">
+  <div class="navbar">
+    <div class="navbar-inner">
+          <a class="brand" href="<%= user_path(current_user) %>">
+            <%= current_user.name %>
+          </a>
+        <ul class="nav nav-tabs">
+          <li><%= link_to "Подать заявку", new_request_path %></li>
+          <li><a href="#">Помощь</a></li>
+          <% if current_user.admin? || current_user.manager? %>
+          <li><%= link_to "Все заявки", requests_path %></li>
+          <% else %>
+          <li><%= link_to "Мои заявки", requests_path %></li>
+          <% end %>
+
+<% if current_user.admin? %>
+
+          <li id="fat-menu" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Организации <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Все организации", agents_path %>
+              <li><%= link_to "Добавить организацию", new_agent_path %></li>
+            </ul>
+          </li> 
+
+<% end %>
+
+          <li id="fat-menu" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Личный кабинет <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Профайл", current_user %>
+              <li><%= link_to "Изменить данные", edit_user_path(current_user) %></li>
+            </ul>
+          </li> 
+          <% if current_user.admin? || current_user.manager? %>
+          <li><%= link_to "Пользователи", users_path %></li>
+          <% end %>
+          <li><%= link_to "Выход", signout_path, method: "delete" %></li> 
+        </ul>
+    </div>
+  </div>
+</div>
