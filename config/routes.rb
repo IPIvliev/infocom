@@ -6,6 +6,7 @@ Infocom::Application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :agents
+    resources :posts
 
   resources :requests do
   	put :fin, :on => :member
@@ -13,16 +14,24 @@ Infocom::Application.routes.draw do
 
   get "index.html" => "static_pages#index"
 
-  match "/contacts", to: 'static_pages#contacts'
+  match "/contacts.html", to: 'static_pages#contacts'
 
-  match "/services", to: 'static_pages#services'
+  match "/services.html", to: 'static_pages#services'
 
-  match "/about_us", to: 'static_pages#about_us'
+  match "services/it_autsorsing_nnov.html", to: 'static_pages#it_autsorsing'
+  match "services/it_audit_nnov.html", to: 'static_pages#it_audit'
+  match "services/korporativniy_sait_nnov.html", to: 'static_pages#sait'
+  match "services/proectirovanie_i_montazh_lvs.html", to: 'static_pages#local'
+  match "services/obsluzhivanie_orgtehniki.html", to: 'static_pages#printers'
+  match "services/ustanovka_servera.html", to: 'static_pages#servers'
 
-  match "/articles", to: 'static_pages#articles'
 
-  match '/signup',  to: 'users#new'
-  match '/signin',  to: 'sessions#new'
+  match "/about_us.html", to: 'static_pages#about_us'
+  match "/help.html", to: 'static_pages#help'
+  match "/articles.html", to: 'static_pages#articles'
+
+  match '/signup.html',  to: 'users#new'
+  match '/signin.html',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
 
   root to: 'static_pages#index'

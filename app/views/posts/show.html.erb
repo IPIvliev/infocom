@@ -1,0 +1,20 @@
+
+<% provide(:title, 'Профайл') %>
+
+<% if signed_in? %>
+<!--=== Breadcrumbs ===-->
+<div class="row-fluid breadcrumbs margin-bottom-20">
+  <div class="container">
+        <h1 class="pull-left">Личный кабинет</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Главная</a> <span class="divider">/</span></li>
+            <li class="active">Профайл</li>
+        </ul>
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+    <%= render 'shared/usermenu' %>
+<div class="container">
+<%= @user.name %>, <%= @user.email %>
+</div>
+<% end %>

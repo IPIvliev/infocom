@@ -4,7 +4,11 @@ class RequestsController < ApplicationController
    
   def index
     if signed_in?
-      @requests = Request.order("created_at DESC").all
+      @requests = Request.order("created_at DESC").where(user_id: current_user)
+
+      if current_user.admin? || current_user.manager?
+      @requests = Request.order("created_at DESC")
+      end
     end
   end
 
@@ -14,7 +18,8 @@ class RequestsController < ApplicationController
   end
 
   def create
-    @request = Request.new(params[:request])
+ 
+    @request = current_user.requests.build(params[:request])
     if @request.save
       flash[:success] = "Заявка успешно принята! Наш менеджер свяжется с Вами по телефону в самое ближайшее время."
       redirect_to requests_path

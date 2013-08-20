@@ -15,27 +15,15 @@
 <div class="container">
     <%= render 'shared/usermenu' %>
 
-<div class="row-fluid">
-    <aside class="span3">
-      <section>
-        <%= render 'shared/user_info' %>
-      </section>
-      <section>
-        <%= render 'shared/stats' %>
-      </section>
-    </aside>
-
-    <div class="span9">
-
 <%= will_paginate %>
 
-<ul class="users">
-  <%= render @agents %>
-</ul>
+<div class="posts">
+
+  <%= render @posts %>
+</div>
 
 <%= will_paginate %>
 
 <% end %>
-</div>
-</div>
+
 </div>

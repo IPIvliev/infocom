@@ -19,7 +19,7 @@
 
 <!--=== End Slider ===-->
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script type="text/javascript" src="/assets/js/jquery.cslider.js"></script>
+        <script type="text/javascript" src="/jquery.cslider.js"></script>
         <script type="text/javascript">
             $(function() {
             
@@ -57,53 +57,7 @@
 <!-- Services -->
 <div class="container">	
 
-        <div class="row-fluid servive-block">
-                <div class="span4">
-                    <a href="#">
-                    <h4>Обслуживание компьютеров</h4>
-                    <p><i class="icon-bell"></i></p>
-                    <p>Donec id elit non mi porta gravida at eget metus id elit mi egetine. Fusce dapibus, tellus ac cursus comodo egetine metuss gorp.</p>
-                </a>
-                </div>
-                <div class="span4">
-                    <a href="#">
-                    <h4>ИТ-аудит</h4>
-                    <p><i class="icon-bullhorn"></i></p>
-                    <p>Donec id elit non mi porta gravida at eget metus id elit mi egetine. Fusce dapibus, tellus ac cursus comodo egetine metuss gorp.</p>
-                </a>
-                </div>
-                <div class="span4">
-                    <a href="#">
-                    <h4>Сопровождение сайтов</h4>
-                    <p><i class="icon-lightbulb"></i></p>
-                    <p>Donec id elit non mi porta gravida at eget metus id elit mi egetine. Fusce dapibus, tellus ac cursus comodo egetine metuss gorp.</p>
-                    </a>
-                </div>
-            </div><!--/row-fluid-->
-
-            <div class="row-fluid servive-block">
-                <div class="span4">
-                    <a href="#">
-                    <h4>Проектирование и монтаж ЛВС</h4>
-                    <p><i class="icon-thumbs-up"></i></p>
-                    <p>Donec id elit non mi porta gravida at eget metus id elit mi egetine. Fusce dapibus, tellus ac cursus comodo egetine metuss gorp.</p>
-                </a>
-                </div>
-                <div class="span4">
-                    <a href="#">
-                    <h4>Обслуживание оргтехники</h4>
-                    <p><i class=" icon-refresh"></i></p>
-                    <p>Donec id elit non mi porta gravida at eget metus id elit mi egetine. Fusce dapibus, tellus ac cursus comodo egetine metuss gorp.</p>
-                </a>
-                </div>
-                <div class="span4">
-                    <a href="#">
-                    <h4>Установка и настройка серверов</h4>
-                    <p><i class="icon-volume-up"></i></p>
-                    <p>Donec id elit non mi porta gravida at eget metus id elit mi egetine. Fusce dapibus, tellus ac cursus comodo egetine metuss gorp.</p>
-                </a>
-                </div>
-            </div><!--/row-fluid-->
+      <%= render 'shared/services' %>
 
 
 <!-- Information Blokcs -->
@@ -170,69 +124,13 @@
     </div><!--/row-fluid--> 
     <!-- //End Information Blokcs -->
 
-
-
-<!-- Our Clients -->
-    <div class="flexslider ">
-        <div class="headline"><h3>Наши клиенты</h3></div>    
-        <ul class="slides">
-            <li>
-                <a href="http://www.nnte.ru" target="blank">
-
-                    <img src="assets/clients/nnte.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-             
-                    <img src="assets/clients/natural.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-               
-                    <img src="assets/clients/aztec.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-            
-                    <img src="assets/clients/gamescast.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-      
-                    <img src="assets/clients/cisco.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-     
-                    <img src="assets/clients/everyday.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-           
-                    <img src="assets/clients/cocacola.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-        
-                    <img src="assets/clients/spinworkx.png" class="color-img" alt="" />
-                </a>
-            </li>
-        </ul>
-    </div><!--/flexslider-->
-    <!-- //End Our Clients -->
-
-
-
+<%= render 'shared/clients' %>
 
 </div>
 
+<% if signed_in? %>
+
+<% else %>
 <!-- Zakaz -->
 <div class="row-fluid purchase top-40 margin-bottom-30">
     <div class="container">
@@ -240,7 +138,8 @@
             <span>Вход для клиентов</span>
             <p>Уникальным приемуществом "Инфоком-НН" является интерактивное взаимодействие со всеми сотрудниками наших клиентов. Личный кабинет комании-клиента включает в себя неограниченное количество пользователей. Каждый из них может нарямую подать заявку на обслуживание компьютера и наш специалист свяжется с ним в самое ближайшее время!</p>
         </div>
-        <%= link_to "Служебный вход", signin_path, :class => "btn-buy hover-effect" %>
+        <%= link_to "Служебный вход", '/signin.html', :class => "btn-buy hover-effect" %>
     </div>
 </div><!--/row-fluid-->
 <!-- End Purchase Block -->
+<% end %>

@@ -11,15 +11,15 @@
 	                </ul>
 	            </li>   
 	            <li class="devider">&nbsp;</li>
-	            <li><a href="page_faq.html" class="login-btn">Помощь</a></li>  
+	            <li><a href="/help.html" class="login-btn">Помощь</a></li>  
 	            <li class="devider">&nbsp;</li>
 	            <% if signed_in? %>
 	            <li><%= link_to "Личный кабинет", requests_path %></li>
 	            <li class="devider">&nbsp;</li>
-	            <li><%= link_to "Выход", signout_path, method: "delete" %></li>
+	            <li><%= link_to "Выход", '/signout.html', method: "delete" %></li>
 	               
 	            <% else %>
-	            <li><%= link_to "Логин", signin_path, :class => "login-btn" %></li>
+	            <li><%= link_to "Логин", '/signin.html', :class => "login-btn" %></li>
 	            <% end %>
 	        </ul>
 	    </div>      
@@ -38,19 +38,19 @@
 				<div class="span8">
 					<ul class="nav nav-pills">
 						<li class="<%=is_active('index')%>">
-							<%= link_to ".::Главная", root_path %>
+							<%= link_to ".::Главная", '/index.html' %>
 						</li>
 						<li class="<%=is_active('about_us')%>">
-							<%= link_to ".::О нас", about_us_path %>
+							<%= link_to ".::О нас", '/about_us.html' %>
 						</li>
 						<li class="<%=is_active('services')%>">
-							<%= link_to ".::Услуги", services_path %>
+							<%= link_to ".::Услуги", '/services.html' %>
 						</li>
 						<li class="<%=is_active('aricles')%>">
-							<%= link_to ".::Блог", articles_path %>
+							<%= link_to ".::Блог", '/articles.html' %>
 						</li>
 						<li class="<%=is_active('contacts')%>">
-							<%= link_to ".::Контакты", contacts_path %>
+							<%= link_to ".::Контакты", '/contacts.html' %>
 						</li>
 						<li class="<%=is_active('search')%>">
 							<a class="search">

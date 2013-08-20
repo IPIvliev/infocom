@@ -1,6 +1,7 @@
 <li>
   <%= gravatar_for user, size: 52 %>
   <%= link_to user.name, user %> /
+    <%= user.requests.count %> /
   <%= user.email %> /
   <%= user.agent.name %> /
 

@@ -19,8 +19,18 @@
         <%= content_tag(:div, value, class: "alert alert-#{key}") %>
       <% end %>
   
-   <%= form_for(@request) do |f| %>
+<div class="row-fluid">
+    <aside class="span3">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+    </aside>
 
+    <div class="span9">
+   <%= form_for(@request) do |f| %>
 
 <% if signed_in? %>
 
@@ -66,5 +76,8 @@
         </div>
       <%= f.submit "Подать заявку", class: "btn-u" %>
     <% end %>
+</div>
+
+</div>
 </div>
 </div>

@@ -9,4 +9,5 @@ class Request < ActiveRecord::Base
 	validates :email, presence: true, length: { maximum: 50 }
 
 	belongs_to :user
+	belongs_to :agent
 end

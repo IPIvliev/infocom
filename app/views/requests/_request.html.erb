@@ -1,18 +1,19 @@
-<tr>
-  <td rowspan="2">
-    <%= request.id %>
-  </td>
-  <td>
+<div class="row tbody">
+<span class="span1"><%= request.id %>
+</span>
+<span class="span1">
     <%= Russian::strftime(request.created_at, "%d %b %Y") %>
-  </td>
-  <td rowspan="2">
+</span>
+<span class="span1">
 
-<% if current_user.admin? || current_user.manager? %>
+  <% if current_user.admin? || current_user.manager? %>
 
   <% if request.finish == true %>
-    <%= link_to "Закрыта", fin_request_path(request), method: :put %>
+
+
+    <%= link_to '<i class="icon-ok green"></i> Закрыта'.html_safe, fin_request_path(request), method: :put %>
   <% else %>
-    <%= link_to "В работе", fin_request_path(request), method: :put %>
+    <%= link_to '<i class="icon-wrench red" alt="Выполнено"></i><br>В работе'.html_safe, fin_request_path(request), method: :put %>
   <% end %>
 
 <% else %>
@@ -23,11 +24,12 @@
     В работе
   <% end %>
 <% end %>
-  </td>
-</tr>
-<tr>
-  <td colspan="5"><strong>Тема заявки: </strong><%= request.text %></td>
-</tr>
-<tr>
-  <td colspan="7"></td>
-</tr>
+
+</span>
+<span class="span2">
+<%= request.user.agent.name %>
+</span>
+<span class="span7">
+<%= request.text %>
+</span>
+</div>

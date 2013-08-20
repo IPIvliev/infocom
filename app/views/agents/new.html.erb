@@ -19,6 +19,18 @@
         <%= content_tag(:div, value, class: "alert alert-#{key}") %>
       <% end %>
   
+<div class="row-fluid">
+    <aside class="span3">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+    </aside>
+
+    <div class="span9">
+
    <%= form_for(@agent) do |f| %>
 
      <div class="span5 area">
@@ -52,5 +64,7 @@
         </div>
       <%= f.submit "Подать заявку", class: "btn-u" %>
     <% end %>
+</div>
+</div>
 </div>
 </div>
