@@ -1,20 +1,42 @@
 
-<% provide(:title, 'Профайл') %>
+<% provide(:title, 'Сообщение в блоге') %>
 
-<% if signed_in? %>
 <!--=== Breadcrumbs ===-->
 <div class="row-fluid breadcrumbs margin-bottom-20">
   <div class="container">
-        <h1 class="pull-left">Личный кабинет</h1>
+        <h1 class="pull-left">Блог</h1>
         <ul class="pull-right breadcrumb">
             <li><a href="index.html">Главная</a> <span class="divider">/</span></li>
-            <li class="active">Профайл</li>
+            <li class="active">Блог</li>
         </ul>
     </div><!--/container-->
 </div><!--/breadcrumbs-->
 <!--=== End Breadcrumbs ===-->
-    <%= render 'shared/usermenu' %>
+    <% if signed_in? %>
+        <%= render 'shared/usermenu' %>
+    <% end %>
+    
 <div class="container">
-<%= @user.name %>, <%= @user.email %>
+
+    <div class="row-fluid">
+        <div class="span9">
+<div class="blog margin-bottom-30">
+            	<h3><%= @post.name %></h3>
+            	<ul class="unstyled inline blog-info">
+                	<li><i class="icon-calendar"></i> <%= Russian::strftime(@post.created_at, "%d %B %Y") %></li>
+                	<li><i class="icon-pencil"></i> <%= @post.user.name %></li>
+                </ul>
+
+                <div class="blog-img"><%= image_tag(@post.picture_url, height: '200', width: '400') %></div>
+
+                <%= @post.text.html_safe %>
+
+            </div><!--/blog-->
+        </div>
+
+        <%= render '/static_pages/right_column' %>
+    </div>
+
+
+
 </div>
-<% end %>

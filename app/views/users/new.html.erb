@@ -36,6 +36,10 @@
 
       <%= f.label :address, "РАБОЧИЙ адрес:" %>
       <%= f.text_field :address, :class => "span12" %>
+
+      <%= f.label :avatar, "Аватар" %>
+      <%= image_tag(@user.avatar_url, height: '120', width: '120') if @user.avatar? %>
+      <%= f.file_field :avatar %>
     </div>
 <div class="controls">
   <div class="span6">

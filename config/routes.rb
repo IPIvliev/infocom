@@ -6,7 +6,7 @@ Infocom::Application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :agents
-    resources :posts
+  resources :posts
 
   resources :requests do
   	put :fin, :on => :member

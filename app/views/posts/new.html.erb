@@ -21,15 +21,21 @@
   
    <%= form_for(@post) do |f| %>
 
-<div class="row-fluid">
+      <div class="row-fluid">
         <div class="span4">
-        <%= f.label :name, "Название" %>
-        <%= f.text_field :name, :class => "input-xxlarge" %>
-        </div></div>
+          <%= f.label :name, "Название" %>
+          <%= f.text_field :name, :class => "input-xxlarge" %>
+        </div>
+      </div>
+
+        <%= f.label :picture, "Изображение" %>
+        <%= image_tag(@post.picture_url, height: '120', width: '120') %>
+        <%= f.file_field :picture %>
+
 <div class="row-fluid">
         <div class="span12">
-        <%= f.label :text, "Текст поста" %>
-        <%= f.text_area :text, :class => "all" %>
+          <%= f.label :text, "Текст поста" %>
+          <%= f.text_area :text, :class => "all" %>
         </div>
       <%= f.submit "Подать заявку", class: "btn-u" %>
     <% end %>

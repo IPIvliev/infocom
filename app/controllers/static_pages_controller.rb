@@ -12,6 +12,7 @@ class StaticPagesController < ApplicationController
   end
 
   def articles
+    @posts = Post.paginate(page: params[:page])
   end
 
   def help

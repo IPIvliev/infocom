@@ -1,5 +1,10 @@
 <li>
-  <%= gravatar_for user, size: 52 %>
+  <% if user.avatar? %>
+    <%= image_tag(user.avatar_url, height: '52', width: '52') %>
+  <% else %>
+    <%= image_tag('/assets/unnamed.jpg', width: '52', height: '52') %>
+  <% end %>
+
   <%= link_to user.name, user %> /
     <%= user.requests.count %> /
   <%= user.email %> /

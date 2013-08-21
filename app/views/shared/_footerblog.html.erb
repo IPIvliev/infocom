@@ -1,7 +1,9 @@
 				<div class="span4">
 	                <div class="posts">
 	                    <div class="headline"><h3>Блог компании</h3></div>
-<%     @posts = Post.order("created_at DESC").all %>
+<%     @posts = Post.order("created_at DESC").limit(3) %>
+
+
 <%= render @posts %>
 
 	                </div>

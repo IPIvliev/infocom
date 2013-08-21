@@ -1,9 +1,6 @@
 	                    <dl class="dl-horizontal">
-	                        <dt><img src="/assets/blog/1.jpg" alt="" /></dt>
+	                        <dt><%= image_tag (post.picture_url) if post.picture? %></dt>
 	                        <dd>
-
-
-	                            <p><%= link_to truncate(post.text, length: 65, omission: '...'), post %></a></p> 
+	                            <%= link_to (truncate( raw( sanitize(post.text, :tags => %w(table tr td), :attributes => %w(id class style) ) ), :length => 65, :omission => "...")), post, :controller => :posts, :action => :show %>
 	                        </dd>
 	                    </dl>
-

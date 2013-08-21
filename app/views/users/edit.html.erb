@@ -32,10 +32,15 @@
       <%= f.label :password_confirmation, "Confirm Password" %>
       <%= f.password_field :password_confirmation %>
 
-      <%= f.submit "Сохранить изменения", class: "btn btn-large btn-primary" %>
+
+      <%= f.label :avatar, "Аватар" %>
+      <%= image_tag(@user.avatar_url, height: '120', width: '120') if @user.avatar? %>
+      <%= f.file_field :avatar %>
+
+      <hr>
+
+      <%= f.submit "Сохранить изменения", class: "btn-u btn-large" %>
     <% end %>
 
-    <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails">изменить</a>
   </div>
 </div>

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation, :phone, :address, :agent_id, :admin, :manager
+  attr_accessible :name, :email, :password, :password_confirmation, :phone, :address, :agent_id, :admin, :manager, :avatar
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   belongs_to :agent
   has_many :requests
   has_many :posts
+
+  mount_uploader :avatar, AvatarUploader
 
   private
 
