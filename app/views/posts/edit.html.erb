@@ -10,29 +10,50 @@
     </div><!--/container-->
 </div><!--/breadcrumbs-->
 <!--=== End Breadcrumbs ===-->
-    <%= render 'shared/usermenu' %>
-
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages' %>
-
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-
-      <%= f.label :password_confirmation, "Confirm Password" %>
-      <%= f.password_field :password_confirmation %>
-
-      <%= f.submit "Сохранить изменения", class: "btn btn-large btn-primary" %>
+    <% if signed_in? %>
+        <%= render 'shared/usermenu' %>
     <% end %>
 
-    <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails">изменить</a>
-  </div>
-</div>
+<div class="container"> 
+
+
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+      <% end %>
+  
+<div class="row-fluid">
+    <aside class="span3">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+    </aside>
+
+    <div class="span9">
+  
+   <%= form_for(@post) do |f| %>
+
+
+        <div class="span12">
+          <%= f.label :name, "Название" %>
+          <%= f.text_field :name, :class => "input-xxlarge" %>
+        </div>
+      
+         <div class="span12">
+        <%= f.label :picture, "Изображение" %>
+        <%= image_tag(@post.picture_url, height: '120', width: '120') %>
+        <%= f.file_field :picture %>
+      </div>
+
+        <div class="span12">
+          <%= f.label :text, "Текст поста" %>
+          <%= f.text_area :text, :class => "all" %>
+        </div>
+        <div class="span12">
+      <%= f.submit "Опубликовать", class: "btn-u" %>
+    </div>
+    <% end %>
+
+</div></div></div>

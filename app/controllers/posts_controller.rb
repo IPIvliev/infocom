@@ -2,7 +2,7 @@
 
 class PostsController < ApplicationController
  def index
-    @posts = Post.paginate(page: params[:page])
+    @posts = Post.paginate(page: params[:page], :per_page => 10).order("created_at DESC")
   end
 
   def show
@@ -16,10 +16,10 @@ class PostsController < ApplicationController
     def create
     @post = current_user.posts.build(params[:post])
     if @post.save
-      flash[:success] = "Поздравляем Вас с успешной регистрацией. Теперь Вы можете подать заявку"
+      flash[:success] = "Вы успешно опубликовали сообщение! Спасибо за публикацию."
       redirect_to posts_path
     else
-      flash.now[:error] = 'Регистрация не удалась. Вы не заполнили, либо не правильно заполнили одно из полей.'
+      flash.now[:error] = 'Публикация отклонена. Вы не заполнили название, либо содержание статьи.'
       render 'new'
     end
   end
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
 
    def destroy
     Post.find(params[:id]).destroy
-    flash[:success] = "Пользователь уничтожен."
+    flash[:success] = "Сообщение уничтожено."
     redirect_to posts_path
   end
 end

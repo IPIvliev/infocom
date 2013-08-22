@@ -64,4 +64,21 @@ Infocom::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+    # ActionMailer Config
+config.action_mailer.raise_delivery_errors = true
+
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+    address:              'smtp.mail.ru',
+    port:                 587,
+    domain:               'mail.ru',
+    user_name:            'cccp1945@mail.ru',
+    password:             'odergies',
+    openssl_verify_mode:  'none',
+    authentication:       :plain,
+    enable_starttls_auto: true
+}
+
+
 end

@@ -1,5 +1,13 @@
+# encoding: utf-8
 class StaticPagesController < ApplicationController
   def index
+  end
+
+  def mail_to
+    @new = params[:mail]
+    MarketingMailer.kp_email(@new).deliver
+    flash[:success] = 'Коммерческое предложение успешно отправленно на '+@new
+    redirect_to root_path
   end
 
   def contacts
@@ -12,7 +20,7 @@ class StaticPagesController < ApplicationController
   end
 
   def articles
-    @posts = Post.paginate(page: params[:page])
+    @posts = Post.paginate(page: params[:page], :per_page => 3).order("created_at DESC")
   end
 
   def help

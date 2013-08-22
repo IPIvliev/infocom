@@ -73,14 +73,14 @@ margin-top: 5px;
 			}
 		}
 		&:hover {
-			background-color: #ddd;
+			background-color: #ccc;
 			border-radius: 10px;
 		}
 		&:nth-child(odd) {
-			background-color: #ccc;
+			background-color: #ddd;
 			border-radius: 10px;
 				&:hover {
-			background-color: #ddd;
+			background-color: #ccc;
 			border-radius: 10px;
 		}
 

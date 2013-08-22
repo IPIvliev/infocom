@@ -12,10 +12,19 @@
 </div><!--/breadcrumbs-->
 <!--=== End Breadcrumbs ===-->
 <div class="container">
-	<% if signed_in? %>
+
+    <% if signed_in? %>
         <%= render 'shared/usermenu' %>
     <% end %>
 
-В разработке
+    <div class="row-fluid">
+        <div class="span9">
+<%= render :partial => '/shared/blog',  :as => :post, :collection => @posts %>
+        </div><!--/span9-->
+        
+<%= render 'right_column' %>
 
+
+    </div><!--/row-fluid-->   
 </div>
+

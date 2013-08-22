@@ -24,10 +24,15 @@
             	<h3><%= @post.name %></h3>
             	<ul class="unstyled inline blog-info">
                 	<li><i class="icon-calendar"></i> <%= Russian::strftime(@post.created_at, "%d %B %Y") %></li>
-                	<li><i class="icon-pencil"></i> <%= @post.user.name %></li>
+                	<li><i class="icon-user"></i> <%= @post.user.name %></li>
+                    <% if signed_in? %>
+                    <li><i class="icon-pencil"></i> <%= link_to "Изменить", edit_post_path(@post), :class => 'yellow' if current_user.admin? || current_user == @post.user %> </li>
+                    <li><i class="icon-trash"></i> <%= link_to "Удалить", @post, method: :delete, :class => 'red',
+                                  data: { confirm: "Вы уверены?" } if current_user.admin? || current_user == @post.user %></li>
+                    <% end %>
                 </ul>
 
-                <div class="blog-img"><%= image_tag(@post.picture_url, height: '200', width: '400') %></div>
+                <div class="blog-img"><%= image_tag(@post.picture_url) %></div>
 
                 <%= @post.text.html_safe %>
 

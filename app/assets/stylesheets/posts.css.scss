@@ -1,6 +1,8 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$red: #960018;
+$yellow: #ffbf00;
 
 .blog {
 	h3 {
@@ -8,7 +10,7 @@
 	}
 .blog-img {
 margin: 10px 0;
-				width: 100%;
+			
 				overflow: hidden;
 				clear: left;
 				text-align: left;
@@ -16,7 +18,7 @@ margin: 10px 0;
 				white-space: nowrap;
 				img {
 		
-					height: 272px;
+					height: 250px;
 
 				}
 }
@@ -38,4 +40,12 @@ border-bottom: solid 1px #EEE;
 padding: 5px 0 5px 0;
 }
 }
+}
+
+.red {
+					color: $red;
+				}
+
+.yellow {
+	color: $yellow;
 }

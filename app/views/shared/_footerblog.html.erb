@@ -4,7 +4,7 @@
 <%     @posts = Post.order("created_at DESC").limit(3) %>
 
 
-<%= render @posts %>
+<%= render :partial => '/shared/footerpost',  :as => :post, :collection => @posts %>
 
 	                </div>
 				</div>

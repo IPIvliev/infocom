@@ -10,7 +10,11 @@
     </div><!--/container-->
 </div><!--/breadcrumbs-->
 <!--=== End Breadcrumbs ===-->
-    <%= render 'shared/usermenu' %>
+<div class="container">
+
+    <% if signed_in? %>
+        <%= render 'shared/usermenu' %>
+    <% end %>
 
 <div class="row">
   <div class="span6 offset3">
@@ -43,4 +47,5 @@
     <% end %>
 
   </div>
+</div>
 </div>
