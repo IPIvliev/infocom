@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class MarketingMailer < ActionMailer::Base
-  default from: "cccp1945@mail.ru"
+  default from: "infocom-nn@yandex.ru"
 
 
 
