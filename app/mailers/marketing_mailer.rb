@@ -9,6 +9,6 @@ class MarketingMailer < ActionMailer::Base
 
   	attachments["kp_infocom_nn.docx"] = File.read('public/kp_infocom_nn.docx', :mode => 'rb')
 
-    mail(to: mail, subject: 'Проверка работы почты')
+    mail(to: mail, subject: 'Коммерческое предложение по ИТ-аутсорсингу от Инфоком-НН')
   end
 end
