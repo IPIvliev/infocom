@@ -37,11 +37,11 @@ config.action_mailer.raise_delivery_errors = false
 
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
-    address:              'smtp.mail.ru',
+    address:              'smtp.yandex.ru',
     port:                 587,
-    domain:               'mail.ru',
-    user_name:            'cccp1945@mail.ru',
-    password:             'odergies',
+    domain:               'yandex.ru',
+    user_name:            'infocom-nn',
+    password:             'Odergies1',
     openssl_verify_mode:  'none',
     authentication:       :plain,
     enable_starttls_auto: true
