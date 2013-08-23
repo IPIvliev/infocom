@@ -10,6 +10,7 @@ class CreateUsers < ActiveRecord::Migration
     t.string   :address
     t.string   :phone
     t.integer  :agent_id
+    t.string   :avatar
 
       t.timestamps
     end

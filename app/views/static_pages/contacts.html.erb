@@ -19,6 +19,9 @@
 
 <!--=== Content Part ===-->
 <div class="container">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+      <% end %>
 
     <% if signed_in? %>
         <%= render 'shared/usermenu' %>
@@ -28,18 +31,30 @@
 		<div class="span9">
             <div class="headline"><h3>Контакты ООО "Инфоком-НН"</h3></div>
             <p>Отправьте своё сообщение сюда. Наш менеджер свяжется с вами в самое ближайшее время. Если что, то форма почти работает.</p><br />
-			<form />
-                <label>Имя</label>
-                <input type="text" class="span7 border-radius-none" />
-                <label>E-mail <span class="color-red">*</span></label>
-                <input type="text" class="span7 border-radius-none" />
-                <label>Сообщение</label>
-                <textarea rows="8" class="span10"></textarea>
-                <p><button type="submit" class="btn-u">Отправить</button></p>
-            </form>
+		
+  <%= form_for @message, :url => {:controller => 'static_pages', :action => 'create'} do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
+        <%= f.label :name, raw("Ваше имя<span class=red>*</span>") %>
+        <%= f.text_field :name, :class => "span7 border-radius-none"%>
+
+  
+        <%= f.label :phone, "Ваш телефон (Если вы укажите свой номер, наш менеджер самостроятельно свяжется с Вами)" %>
+        <%= f.text_field :phone %>
+
+
+        <%= f.label :email, raw("Адрес электронной почты<span class=red>*</span>") %>
+        <%= f.text_field :email %>
+
+
+        <%= f.label :text, raw("Сообщение<span class=red>*</span>") %>
+        <%= f.text_area :text, :class => 'span10', :rows => "8" %>
+<p><%= f.submit "Опубликовать", class: "btn-u" %></p>
+<% end %>
+<span class=red>*</span> Поля, обязательные для заполнения.
+
         </div><!--/span9-->
         
-<%= render 'right_column' %>
+<%= render '/static_pages/right_column' %>
 
 
     </div><!--/row-fluid-->   

@@ -1,18 +1,18 @@
-        	<div class="blog margin-bottom-30">
-            	<h3><%= post.name %></h3>
-            	<ul class="unstyled inline blog-info">
-                	<li><i class="icon-calendar"></i> <%= Russian::strftime(post.created_at, "%d %B %Y") %></li>
-                	<li><i class="icon-pencil"></i> <%= post.user.name %></li>
-                    <% if signed_in? %>
-                    <% if current_user.admin?  %>
-                    <li><i class="icon-trash"></i> <%= link_to "Удалить", @post, method: :delete,
-                                  data: { confirm: "Вы уверены?" } %> </li>
-                    <% end %><% end %>
-                </ul>
-                <div class="blog-img"><%= image_tag(post.picture_url) %></div>
-                <p>
-                	<%= truncate( raw( sanitize(post.text, :tags => %w(table tr td), :attributes => %w(id class style) ) ), :length => 800, :omission => "...") %>
-                </p>
-                <p>
-                	<%= link_to "Читать полностью", post, :class => 'btn-u btn-u-small' %>
-            </div><!--/blog-->
+<div class="blog margin-bottom-30">
+	<h3><%= post.name %></h3>
+	<ul class="unstyled inline blog-info">
+    	<li><i class="icon-calendar"></i> <%= Russian::strftime(post.created_at, "%d %B %Y") %></li>
+    	<li><i class="icon-pencil"></i> <%= post.user.name %></li>
+        <% if signed_in? %>
+        <% if current_user.admin?  %>
+        <li><i class="icon-trash"></i> <%= link_to "Удалить", @post, method: :delete,
+                      data: { confirm: "Вы уверены?" } %> </li>
+        <% end %><% end %>
+    </ul>
+    <div class="blog-img"><%= image_tag(post.picture_url) %></div>
+    <p>
+    	<%= truncate( raw( sanitize(post.text, :tags => %w(table tr td), :attributes => %w(id class style) ) ), :length => 800, :omission => "...") %>
+    </p>
+    <p>
+    	<%= link_to "Читать полностью", post, :class => 'btn-u btn-u-small' %>
+</div><!--/blog-->

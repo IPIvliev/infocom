@@ -15,7 +15,7 @@ Infocom::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Generate digests for assets URLs
   config.assets.digest = true
@@ -66,7 +66,7 @@ Infocom::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
     # ActionMailer Config
-config.action_mailer.raise_delivery_errors = true
+config.action_mailer.raise_delivery_errors = false
 
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {

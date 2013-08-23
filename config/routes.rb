@@ -7,6 +7,7 @@ Infocom::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :agents
   resources :posts
+  resources :messages
 
   resources :requests do
   	put :fin, :on => :member
@@ -17,6 +18,7 @@ Infocom::Application.routes.draw do
   match "/mail_to", to: 'static_pages#mail_to'
 
   match "/contacts.html", to: 'static_pages#contacts'
+  match "contacts/messages", to: 'static_pages#create'
 
   match "/services.html", to: 'static_pages#services'
 
