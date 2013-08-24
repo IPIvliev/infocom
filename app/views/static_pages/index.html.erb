@@ -1,21 +1,21 @@
 
 <div id="da-slider" class="da-slider">
-                <div class="da-slide">
-            <h2><i>ДОСТУПНО &amp; НАДЁЖНО</i> <br /> <i>ИТ-АУТСОРСИНГ</i> <br /> <i>В НИЖНЕМ НОВГОРОДЕ</i></h2>
-            <p><i>Обслуживание</i> <br /> <i>корпоративных сетей</i> <br /> <i>и информационной инфраструктуры</i></p>
-            <div class="da-img"><img src="/assets/img/1.jpg" alt="" /></div>
-                </div>
-         <div class="da-slide">
-            <h2><i>ВОСПОЛЬЗУЙЗЯ</i> <br /> <i>ПРЕИМУЩЕСТВАМИ</i> <br /> <i>ИТ-АУТСОРСИНГА</i></h2>
-            <p><i>Высокая степень экономии</i> <br /> <i>и профессиональны подход</i> <br /> <i>+ корпоративная гарантия </i></p>
-            <div class="da-img"><img src="/assets/img/2.jpg" alt="image01" /></div>
-        </div>
-                <nav class="da-arrows">
-                    <span class="da-arrows-prev"></span>
-                    <span class="da-arrows-next"></span>
-                </nav>
-            </div>
-        </div>
+    <div class="da-slide">
+        <h2><i>ДОСТУПНО &amp; НАДЁЖНО</i> <br /> <i>ИТ-АУТСОРСИНГ</i> <br /> <i>В НИЖНЕМ НОВГОРОДЕ</i></h2>
+        <p><i>Обслуживание</i> <br /> <i>корпоративных сетей</i> <br /> <i>и информационной инфраструктуры</i></p>
+        <div class="da-img"><img src="/assets/img/1.jpg" alt="" /></div>
+    </div>
+     <div class="da-slide">
+        <h2><i>ВОСПОЛЬЗУЙЗЯ</i> <br /> <i>ПРЕИМУЩЕСТВАМИ</i> <br /> <i>ИТ-АУТСОРСИНГА</i></h2>
+        <p><i>Высокая степень экономии</i> <br /> <i>и профессиональны подход</i> <br /> <i>+ корпоративная гарантия </i></p>
+        <div class="da-img"><img src="/assets/img/2.jpg" alt="image01" /></div>
+    </div>
+    <nav class="da-arrows">
+        <span class="da-arrows-prev"></span>
+        <span class="da-arrows-next"></span>
+    </nav>
+</div>
+
 
 <!--=== End Slider ===-->
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -35,29 +35,8 @@
 <% if signed_in? %>
 <br><br>
     <%= render 'shared/usermenu' %>
-<% else %>
-<div class="row-fluid purchase margin-bottom-30">
-    <div class="container">
-
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-      <% end %>
-  
-        
-		<div class="span7">
-            <span>Получите наше коммерческое предложение</span>
-            <p>Заполнив поле с электронной почтой и нажав на кнопку, в течении 3 минут вы получите наше коммерческое предложение с подробным описанием предоставляемых услуг. Быстро и качественно - вот дивиз "Инфоком-НН".</p>
-        </div>
-        <%= form_tag('mail_to', controller: 'static_pages', action: "mail_to", :class => 'center') do %>
-            <div class="input-append top-10 center">
-            <%= text_field_tag 'mail', nil, :class => 'huge plus', :placeholder => 'Введите Ваш E-mail' %>
-            <button class="btn-u hover-effect huge">Получить предложение</button>
-            </div>
-        <% end %>
-    
-    </div>
-</div><!--/row-fluid-->
-<!-- End Purchase Block -->
+<% else %><br><br>
+    <%= render 'shared/kp' %>
 <% end %>
 <!-- Services -->
 <div class="container">	

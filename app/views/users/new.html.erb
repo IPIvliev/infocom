@@ -4,7 +4,7 @@
   <div class="container">
         <h1 class="color-green pull-left">Регистрация нового пользователя</h1>
         <ul class="pull-right breadcrumb">
-            <li><a href="index.html">Главная</a> <span class="divider">/</span></li>
+            <li><a href="/index.html">Главная</a> <span class="divider">/</span></li>
             <li class="active">Регистрация</li>
         </ul>
     </div><!--/container-->
@@ -20,7 +20,7 @@
 
     <%= form_for(@user, :html => {:class => 'reg-page'}) do |f| %>
     <h3>Регистрация</h3>
-      <%= render 'shared/error_messages', object: f.object %>
+  <%= render 'shared/error_messages', object: f.object %>
 <div class="controls">
       <%= f.label :name, "Ваше имя" %>
       <%= f.text_field :name, :class => "span12" %>

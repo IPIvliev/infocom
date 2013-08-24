@@ -110,3 +110,8 @@
 </div>
 	<!-- //End Meer Our Team -->
 </div>
+<% if signed_in? %>
+
+<% else %>
+    <%= render 'shared/kp' %>
+<% end %>

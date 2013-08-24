@@ -12,11 +12,13 @@
     </div><!--/container-->
 </div><!--/breadcrumbs-->
 <!--=== End Breadcrumbs ===-->
-<div class="container">
-	<% if signed_in? %>
-        <%= render 'shared/usermenu' %>
-    <% end %>
+<% if signed_in? %>
+    <%= render 'shared/usermenu' %>
+<% else %>
+    <%= render 'shared/kp' %>
+<% end %>
 
+<div class="container">
 
     <div class="row-fluid margin-bottom-20">
         <!-- Who We Are -->

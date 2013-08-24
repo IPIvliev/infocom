@@ -4,7 +4,7 @@
   <div class="container">
         <h1 class="color-green pull-left">Добавить организацию</h1>
         <ul class="pull-right breadcrumb">
-            <li><a href="index.html">Главная</a> <span class="divider">/</span></li>
+            <li><a href="/index.html">Главная</a> <span class="divider">/</span></li>
             <li class="active">Добавить организацию</li>
         </ul>
     </div><!--/container-->
@@ -32,7 +32,7 @@
     <div class="span9">
 
    <%= form_for(@agent) do |f| %>
-
+<%= render 'shared/error_messages', object: f.object %>
      <div class="span5 area">
         <%= f.label :name, "Наименование организации" %>
         <%= f.text_field :name %>

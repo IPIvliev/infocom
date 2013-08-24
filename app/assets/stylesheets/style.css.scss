@@ -24,6 +24,7 @@ body {
 			display: inline-block;
 			text-shadow: 0 0 1px #F6F6F6;
 			border-bottom: 2px solid #72C02C;
+
 		}
 	}
 
@@ -39,6 +40,9 @@ body {
 		text-shadow: 0 0 1px #F6F6F6;
 		font-weight: normal !important;
 		font-family: 'Open Sans', sans-serif;
+					&.color_green {
+				color: #72C02C;
+			}
 	}
 	.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
 		width: 1170px;
@@ -74,7 +78,9 @@ body {
 
 	.plus {
 		display: block;
+		width: 380px;
 	}
+
 
 	.center {
 		text-align: center;
