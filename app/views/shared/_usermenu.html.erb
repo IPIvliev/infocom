@@ -48,13 +48,28 @@
               Личный кабинет <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Профайл", current_user %>
+              <li><%= link_to "Профайл", current_user %></li>
               <li><%= link_to "Изменить данные", edit_user_path(current_user) %></li>
             </ul>
           </li> 
           <% if current_user.admin? || current_user.manager? %>
           <li><%= link_to "Пользователи", users_path %></li>
           <% end %>
+
+<% if current_user.admin? %>
+
+          <li id="fat-menu" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Маркетинг <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Все сообщения", messages_path %></li>
+              <li><%= link_to "Отправка КП", emails_path %></li>
+            </ul>
+          </li> 
+
+<% end %>
+
           <li><%= link_to "Выход", signout_path, method: "delete" %></li> 
         </ul>
     </div>

@@ -6,9 +6,15 @@ class StaticPagesController < ApplicationController
   def mail_to
     @new = params[:mail]
     if @new.present?
-      MarketingMailer.kp_email(@new).deliver
-      flash[:success] = 'Коммерческое предложение успешно отправленно на '+@new
-      redirect_to root_path
+      @email = Email.new(:email => @new)
+        if @email.save
+          MarketingMailer.kp_email(@new).deliver
+          flash[:success] = 'Коммерческое предложение успешно отправленно на '+@new
+          redirect_to root_path
+        else
+          flash[:error] = 'Вы не правильно заполнили адрес электронной почты.'
+          redirect_to root_path
+        end
     else
       flash[:error] = 'Вы не заполнили адрес электронной почты.'
       redirect_to root_path

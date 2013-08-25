@@ -8,6 +8,7 @@ Infocom::Application.routes.draw do
   resources :agents
   resources :posts
   resources :messages
+  resources :emails
 
   resources :requests do
   	put :fin, :on => :member
