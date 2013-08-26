@@ -30,23 +30,23 @@
 	<div class="row-fluid">
 		<div class="span9">
             <div class="headline"><h3>Контакты ООО "Инфоком-НН"</h3></div>
-            <p>Отправьте своё сообщение сюда. Наш менеджер свяжется с вами в самое ближайшее время. Если что, то форма почти работает.</p><br />
+            <p>Отправьте своё сообщение. Наш менеджер свяжется с вами в самое ближайшее время.</p><br />
 		
   <%= form_for @message, :url => {:controller => 'static_pages', :action => 'create'} do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
-        <%= f.label :name, raw("Ваше имя<span class=red>*</span>") %>
+        <%= f.label :name, raw("<strong>Ваше имя</strong><span class=red>*</span>") %>
         <%= f.text_field :name, :class => "span7 border-radius-none"%>
 
   
-        <%= f.label :phone, "Ваш телефон (Если вы укажите свой номер, наш менеджер самостроятельно свяжется с Вами)" %>
+        <%= f.label :phone, raw("<strong>Ваш телефон</strong> (Если вы укажите свой номер, наш менеджер самостроятельно свяжется с Вами)") %>
         <%= f.text_field :phone %>
 
 
-        <%= f.label :email, raw("Адрес электронной почты<span class=red>*</span>") %>
+        <%= f.label :email, raw("<strong>Адрес электронной почты</strong><span class=red>*</span>") %>
         <%= f.text_field :email %>
 
 
-        <%= f.label :text, raw("Сообщение<span class=red>*</span>") %>
+        <%= f.label :text, raw("<strong>Сообщение</strong><span class=red>*</span>") %>
         <%= f.text_area :text, :class => 'span10', :rows => "8" %>
 <p><%= f.submit "Опубликовать", class: "btn-u" %></p>
 <% end %>

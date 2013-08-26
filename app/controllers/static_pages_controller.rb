@@ -4,6 +4,7 @@ class StaticPagesController < ApplicationController
   end
 
   def mail_to
+    require 'net/http'
     @new = params[:mail]
     if @new.present?
       @email = Email.new(:email => @new)
@@ -28,6 +29,13 @@ class StaticPagesController < ApplicationController
   def create
     @message = Message.new(params[:message])
     if @message.save
+      
+      @phone = params[:message][:phone]
+      @name = params[:message][:name]
+      url = "http://sms.ru/sms/send?api_id=9d3359eb-9224-2384-5d06-1118975a2cd2&to=79051916188&text=Инфоком-НН (сообщение) от "+@name+" "+@phone
+      uri = URI.parse(URI.encode(url.strip))
+      response = Net::HTTP.get_response(uri)
+
       flash[:success] = "Ваше сообщение успешно отправленно. Менеджер Инфоком-НН свяжется с вами в ближайшее время."
       redirect_to '/contacts.html'
     else

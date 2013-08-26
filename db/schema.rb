@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(:version => 20130825141012) do
     t.string   "name"
     t.string   "text"
     t.integer  "user_id"
+    t.string   "picture"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "picture"
   end
 
   create_table "requests", :force => true do |t|
@@ -72,9 +72,9 @@ ActiveRecord::Schema.define(:version => 20130825141012) do
     t.string   "address"
     t.string   "phone"
     t.integer  "agent_id"
+    t.string   "avatar"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
-    t.string   "avatar"
   end
 
 end
