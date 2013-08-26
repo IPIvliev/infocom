@@ -22,6 +22,8 @@ class RequestsController < ApplicationController
     @request = current_user.requests.build(params[:request])
     if @request.save
 
+      require 'net/http'
+
       @phone = current_user.phone
       @name = current_user.agent.name
 
