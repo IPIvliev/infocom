@@ -7,7 +7,9 @@ Infocom::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :agents
   resources :posts
-  resources :messages
+  resources :messages do
+    put :answer, :on => :member
+  end
   resources :emails
 
   resources :requests do

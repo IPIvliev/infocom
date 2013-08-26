@@ -35,8 +35,9 @@ ActiveRecord::Schema.define(:version => 20130825141012) do
     t.string   "email"
     t.string   "phone"
     t.string   "text"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "answer",     :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "posts", :force => true do |t|

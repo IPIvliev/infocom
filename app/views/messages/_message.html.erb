@@ -1,13 +1,20 @@
 <dl class="dl-horizontal">
     <dt><%= Russian::strftime(message.created_at, "%d %B %Y %H:%M") %></dt>
+    <dt>
+        <% if message.answer == true %>
+            <%= link_to 'Обработана'.html_safe, answer_message_path(message), :class => "green", method: :put %>
+        <% else %>
+            <%= link_to 'Новая заявка', answer_message_path(message), :class => "red", method: :put %>
+        <% end %>
+    </dt>
     <dd>
-        <%= message.name %> /
+        <%= message.name %>
     </dd>
     <dd>
-        <%= message.email %> /
+        <%= message.email %>
     </dd>
     <dd>
-        <%= message.phone %> /
+        <%= message.phone %>
     </dd>
     <dd>
         <%= message.text %>

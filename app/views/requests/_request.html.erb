@@ -9,8 +9,6 @@
   <% if current_user.admin? || current_user.manager? %>
 
   <% if request.finish == true %>
-
-
     <%= link_to '<i class="icon-ok green"></i> Закрыта'.html_safe, fin_request_path(request), method: :put %>
   <% else %>
     <%= link_to '<i class="icon-wrench red" alt="Выполнено"></i><br>В работе'.html_safe, fin_request_path(request), method: :put %>

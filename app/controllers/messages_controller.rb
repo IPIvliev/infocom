@@ -10,9 +10,6 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
   end
 
-
-
-
   def edit
     @message = Message.find(params[:id])
   end
@@ -31,6 +28,12 @@ class MessagesController < ApplicationController
     Message.find(params[:id]).destroy
     flash[:success] = "Сообщение уничтожено."
     redirect_to posts_path
+  end
+
+  def answer
+    @answer = Message.find(params[:id])
+    @answer.toggle!(:answer)
+    redirect_to messages_path
   end
 
 end

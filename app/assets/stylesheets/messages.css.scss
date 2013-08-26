@@ -1,3 +1,21 @@
 // Place all the styles related to the Messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$green: #72C02C;
+$red: #960018;
+
+dt {
+			a {
+				text-decoration: none;
+				&:hover {
+				text-decoration: none;
+				}
+			}
+				.green {
+					color: $green;
+				}
+
+				.red {
+					color: $red;
+				}
+}
