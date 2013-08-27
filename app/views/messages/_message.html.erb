@@ -7,6 +7,9 @@
             <%= link_to 'Новая заявка', answer_message_path(message), :class => "red", method: :put %>
         <% end %>
     </dt>
+    <dt>
+        <%= link_to "Удалить", message, method: :delete, :class => "red", data: { confirm: "Вы уверены?" } if current_user.admin? %>
+    </dt>
     <dd>
         <%= message.name %>
     </dd>

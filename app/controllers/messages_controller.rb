@@ -27,7 +27,7 @@ class MessagesController < ApplicationController
    def destroy
     Message.find(params[:id]).destroy
     flash[:success] = "Сообщение уничтожено."
-    redirect_to posts_path
+    redirect_to messages_path
   end
 
   def answer

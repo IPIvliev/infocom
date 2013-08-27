@@ -25,9 +25,20 @@
 
 </span>
 <span class="span2">
-<%= request.user.agent.name %>
+<%= request.user.agent.name %><br>
+<%= request.user.name %> <br>
+<%= request.user.phone %>
 </span>
 <span class="span7">
 <%= request.text %>
 </span>
+
+<% if current_user.admin? %>
+          <span class="span1">
+            
+            <%= link_to "Удалить", request, method: :delete, :class => "red", data: { confirm: "Вы уверены?" } %>
+
+          </span>
+<% end %>
+
 </div>

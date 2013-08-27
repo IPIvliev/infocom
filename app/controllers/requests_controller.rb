@@ -39,6 +39,26 @@ class RequestsController < ApplicationController
     end
   end
 
+    def edit
+    @request = Request.find(params[:id])
+  end
+
+  def update
+    @request = Request.find(params[:id])
+    if @request.update_attributes(params[:request])
+      flash[:success] = "Данные обновлены."
+      redirect_to requests_path
+    else
+      render 'edit'
+    end
+  end
+
+   def destroy
+    Request.find(params[:id]).destroy
+    flash[:success] = "Сообщение уничтожено."
+    redirect_to requests_path
+  end
+
   def fin
     @fin = Request.find(params[:id])
     @fin.toggle!(:finish)
