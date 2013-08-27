@@ -29,7 +29,15 @@
 <%= request.user.name %> <br>
 <%= request.user.phone %>
 </span>
-<span class="span7">
+<span class="span2">
+  <% if request.manager_id? %>
+<%= request.manager.name %> <br>
+<%= request.manager.phone %>
+  <% else %>
+Smth
+  <% end %>
+</span>
+<span class="span5">
 <%= request.text %>
 </span>
 

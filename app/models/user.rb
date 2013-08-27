@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :requests
   has_many :posts
 
+
   mount_uploader :avatar, AvatarUploader
 
   private
