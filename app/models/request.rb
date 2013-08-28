@@ -1,5 +1,5 @@
 class Request < ActiveRecord::Base
-	attr_accessible :name, :phone, :address, :who, :text, :email, :user_id
+	attr_accessible :name, :phone, :address, :who, :text, :email, :user_id, :manager_id
 
 	validates :name, presence: true, length: { maximum: 50 }
 	validates :phone, presence: true, length: { maximum: 50 }

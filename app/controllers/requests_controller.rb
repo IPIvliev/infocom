@@ -65,4 +65,24 @@ class RequestsController < ApplicationController
     redirect_to requests_path
   end
 
+  def doit
+    @request = Request.find(params[:id])
+    if @request.update_attributes(:manager_id => current_user.id)
+      flash[:success] = "Данные обновлены."
+      redirect_to requests_path
+    else
+      render 'edit'
+    end
+  end
+
+  def notdoit
+    @request = Request.find(params[:id])
+    if @request.update_attributes(:manager_id => nil)
+      flash[:success] = "Данные обновлены."
+      redirect_to requests_path
+    else
+      render 'edit'
+    end
+  end
+
 end

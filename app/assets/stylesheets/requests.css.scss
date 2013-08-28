@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $green: #72C02C;
 $red: #960018;
+$blue: #0015ff;
 
 .all {
 	width: 100%;
@@ -48,6 +49,10 @@ $red: #960018;
 				.red {
 					color: $red;
 				}
+				.blue {
+					color: $blue;
+				}
+
 
 			a {
 				&:hover {

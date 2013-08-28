@@ -14,6 +14,8 @@ Infocom::Application.routes.draw do
 
   resources :requests do
   	put :fin, :on => :member
+    put :doit, :on => :member
+    put :notdoit, :on => :member
   end
 
   get "index.html" => "static_pages#index"

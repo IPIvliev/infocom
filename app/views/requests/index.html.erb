@@ -31,7 +31,19 @@
     <div class="span9">
       <div class="table">
         <div class="thead row">
-          <span class="span1">#</span><span class="span1">Дата</span><span class="span1">Статус</span><span class="span2">Орг.</span><span class="span7">Текст</span>
+          <span class="span1">#</span><span class="span1">Дата</span><span class="span1">Статус</span>
+          <% if current_user.admin? || current_user.manager? %>
+          <span class="span2">Орг.</span>
+          <% end %>
+          <span class="span2">Исполнитель</span>
+
+<% if current_user.admin? %>
+          <span class="span5">Текст</span>
+<% else %>
+          <span class="span6">Текст</span>
+<% end %>
+
+          
 
 <% if current_user.admin? %>
           <span class="span1"></span>
