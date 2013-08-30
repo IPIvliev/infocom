@@ -1,67 +1,62 @@
 <% provide(:title, 'Заявки') %>
 
 <% if signed_in? %>
-<!--=== Breadcrumbs ===-->
-<div class="row-fluid breadcrumbs margin-bottom-20">
-  <div class="container">
-        <h1 class="pull-left">Личный кабинет</h1>
-        <ul class="pull-right breadcrumb">
-            <li><a href="/index.html">Главная</a> <span class="divider">/</span></li>
-            <li class="active">Заявки</li>
-        </ul>
+  <!--=== Breadcrumbs ===-->
+  <div class="row-fluid breadcrumbs margin-bottom-20">
+    <div class="container">
+      <h1 class="pull-left">Личный кабинет</h1>
+      <ul class="pull-right breadcrumb">
+        <li><a href="/index.html">Главная</a> <span class="divider">/</span></li>
+        <li class="active">Заявки</li>
+      </ul>
     </div><!--/container-->
-</div><!--/breadcrumbs-->
-<!--=== End Breadcrumbs ===-->
-    <%= render 'shared/usermenu' %>
+  </div><!--/breadcrumbs-->
 
-<div class="container"> 
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-      <% end %>  
-  <div class="row-fluid">
-    <aside class="span3">
-      <section>
-        <%= render 'shared/user_info' %>
-      </section>
-      <section>
-        <%= render 'shared/stats' %>
-      </section>
-    </aside>
-    
-    <div class="span9">
-      <div class="table">
-        <div class="thead row">
-          <span class="span1">#</span><span class="span1">Дата</span><span class="span1">Статус</span>
-          <% if current_user.admin? || current_user.manager? %>
-          <span class="span2">Орг.</span>
-          <% end %>
-          <span class="span2">Исполнитель</span>
+  <%= render 'shared/usermenu' %>
 
-<% if current_user.admin? %>
-          <span class="span5">Текст</span>
-<% else %>
-          <span class="span6">Текст</span>
-<% end %>
+  <div class="container"> 
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+    <% end %>  
+    <div class="row-fluid">
+      <aside class="span3">
+        <section>
+          <%= render 'shared/user_info' %>
+        </section>
+        <section>
+          <%= render 'shared/stats' %>
+        </section>
+      </aside> 
+      <div class="span9">
+        <div class="table">
+          <div class="thead row">
+              <span class="span1">#</span><span class="span1">Дата</span><span class="span1">Статус</span>
+            
+            <% if current_user.admin? || current_user.manager? %>
+              <span class="span2">Орг.</span>
+            <% end %>
+            
+              <span class="span2">Исполнитель</span>
 
+            <% if current_user.admin? %>
+              <span class="span5">Текст</span>
+            <% else %>
+              <span class="span6">Текст</span>
+            <% end %>
+
+            <% if current_user.admin? %>
+              <span class="span1"></span>
+            <% end %>
           
-
-<% if current_user.admin? %>
-          <span class="span1"></span>
-<% end %>
-        
-        </div>
-          <%= render @requests %>
-          <%= will_paginate %>
-      </div>  
+          </div>
+            <%= render @requests %>
+            <%= will_paginate %>
+        </div>  
       </div>
+    </div>
   </div>
-</div>
 <% else %>
-
-Вы не зарегистрированны 
-
-
-
+  Вы не зарегистрированны 
 <% end %>
 
 
