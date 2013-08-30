@@ -1,0 +1,38 @@
+<% provide(:title, 'Карта сайта') %>
+
+<!--=== Breadcrumbs ===-->
+<div class="row-fluid breadcrumbs margin-bottom-40">
+	<div class="container">
+        <h1 class="pull-left">Карта сайта</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Главная</a> <span class="divider">/</span></li>
+            <li class="active">Карта сайта</li>
+        </ul>
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+<div class="container">
+	<% if signed_in? %>
+        <%= render 'shared/usermenu' %>
+    <% end %>
+
+<!--=== Content Part ===-->
+<div class="row-fluid">            
+  <div class="span9">
+  
+  <a href="/index.html"><h4>Главная</h4></a>
+  <a href="/index.html"><h4>О нас</h4></a>
+  <a href="/index.html"><h4>Услуги</h4></a>
+  <ul>
+    <li><a href="/index.html"><strong>Ит аутсорсинг</strong></a>
+    <li><a href="/index.html"><strong>ИТ-аудит</strong></a>
+    <li><a href="/index.html"><strong>Создание и обслуживание сайтов</strong></a>
+  </ul>
+  <a href="/index.html"><h4>Блог</h4></a>
+  <a href="/index.html"><h4>Контакты</h4></a>
+
+
+
+  </div>
+  <%= render '/static_pages/right_column' %>
+</div>

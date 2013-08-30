@@ -37,6 +37,7 @@ Infocom::Application.routes.draw do
 
   match "/about_us.html", to: 'static_pages#about_us'
   match "/help.html", to: 'static_pages#help'
+  match "/sitemap.html", to: 'static_pages#sitemap'
   match "/articles.html", to: 'static_pages#articles'
 
   match '/signup.html',  to: 'users#new'

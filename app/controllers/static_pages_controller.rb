@@ -52,6 +52,9 @@ class StaticPagesController < ApplicationController
   def about_us
   end
 
+  def sitemap
+  end
+
   def articles
     @posts = Post.paginate(page: params[:page], :per_page => 3).order("created_at DESC")
   end
