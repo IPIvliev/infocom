@@ -17,7 +17,6 @@
     <% end %>
     <div class="row-fluid">
         <div class="span9">
-            <%= will_paginate @posts %>
             <%= render :partial => '/shared/blog',  :as => :post, :collection => @posts %>
             <%= will_paginate @posts %>
         </div><!--/span9-->
