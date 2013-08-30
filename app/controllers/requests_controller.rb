@@ -4,10 +4,10 @@ class RequestsController < ApplicationController
    
   def index
     if signed_in?
-      @requests = Request.order("created_at DESC").where(user_id: current_user)
+      @requests = Request.paginate(page: params[:page], :per_page => 10).order("created_at DESC").where(user_id: current_user)
 
       if current_user.admin? || current_user.manager?
-      @requests = Request.order("created_at DESC")
+      @requests = Request.paginate(page: params[:page], :per_page => 10).order("created_at DESC")
       end
     end
   end
