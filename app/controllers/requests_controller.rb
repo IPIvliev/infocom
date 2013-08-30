@@ -27,7 +27,9 @@ class RequestsController < ApplicationController
       @phone = current_user.phone
       @name = current_user.agent.name
 
-      url = "http://sms.ru/sms/send?api_id=9d3359eb-9224-2384-5d06-1118975a2cd2&to=79051916188&text=Инфоком-НН (новая заявка) от "+@name+" "+@phone
+       t = User.where('admin = ? OR manager = ?', true, true).select("phone").map(&:phone).join(',')
+
+      url = "http://sms.ru/sms/send?api_id=9d3359eb-9224-2384-5d06-1118975a2cd2&to="+t+"&text=Инфоком-НН (новая заявка) от "+@name+" "+@phone
       uri = URI.parse(URI.encode(url.strip))
       response = Net::HTTP.get_response(uri)
 

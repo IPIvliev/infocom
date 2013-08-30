@@ -1,75 +1,80 @@
 <div class="row tbody">
-<span class="span1"><%= request.id %>
-</span>
-<span class="span1">
+  <span class="span1">
+    <%= request.id %>
+  </span>
+  <span class="span1">
     <%= Russian::strftime(request.created_at, "%d %b %Y г. %H:%M") %>
-</span>
-<span class="span1">
+  </span>
+  <span class="span1">
+    <% if current_user.id == request.manager_id || current_user.admin? %>
 
-<% if current_user.id == request.manager_id || current_user.admin? %>
-
-  <% if request.finish == true %>
-    <%= link_to '<i class="icon-ok green"></i> Исполнено'.html_safe, fin_request_path(request), method: :put %>
-  <% elsif request.manager_id? %>
-    <% if current_user.id == request.manager_id || current_user.admin %>
-      <%= link_to '<i class="icon-wrench blue"></i><br> В работе'.html_safe, fin_request_path(request), method: :put %>
-    <% elsif current_user.manager? && current_user != request.manager_id %>
-      <i class="icon-wrench blue"></i><br> В работе
+      <% if request.finish == true %>
+        <%= link_to '<i class="icon-ok green"></i> Исполнено'.html_safe, fin_request_path(request), method: :put %>
+      <% elsif request.manager_id? %>
+        <% if current_user.id == request.manager_id || current_user.admin %>
+          <%= link_to '<i class="icon-wrench blue"></i><br> В работе'.html_safe, fin_request_path(request), method: :put %>
+        <% elsif current_user.manager? && current_user != request.manager_id %>
+          <i class="icon-wrench blue"></i><br> В работе
+        <% end %>
+      <% else %>
+        <i class="icon-bolt red"></i><br> Обработка
+      <% end %>
+    <% else %>
+      <% if request.finish == true %>
+        <i class="icon-ok green"></i> Исполнено
+      <% elsif request.manager_id? %>
+        <i class="icon-wrench blue"></i><br> В работе
+      <% else %>
+        <i class="icon-bolt red"></i><br> Обработка
+      <% end %>
     <% end %>
-      
-  <% else %>
-    <i class="icon-bolt red"></i><br> Обработка
-  <% end %>
-
-<% else %>
-
-  <% if request.finish == true %>
-    <i class="icon-ok green"></i> Исполнено
-  <% elsif request.manager_id? %>
-    <i class="icon-wrench blue"></i><br> В работе
-  <% else %>
-    <i class="icon-bolt red"></i><br> Обработка
-  <% end %>
-<% end %>
-    
-</span>
+  </span>
 
 <% if current_user.admin? || current_user.manager? %>
-<span class="span2">
-<%= request.user.agent.name %><br>
-<%= request.user.name %> <br>
-<%= request.user.phone %>
-</span>
+  <span class="span2">
+    <%= request.user.agent.name %><br>
+    <%= request.user.name %> <br>
+    <%= request.user.phone %>
+  </span>
 <% end %>
 
-<span class="span2">
-  <% if request.manager_id? %>
-<%= request.manager.name %> <br>
-<%= request.manager.phone %>
-  <% if current_user.id == request.manager_id || current_user.admin? %>
-    <% if request.finish? %>
+  <span class="span2">
+    <% if request.manager_id? %>
+        <%= request.manager.name %> <br>
+        <%= request.manager.phone %>
+      <% if current_user.id == request.manager_id || current_user.admin? %>
+        <% if request.finish? %>
+
+        <% else %>
+         <br><%= link_to '<i class="icon-trash red"></i> Отменить заявку'.html_safe, notdoit_request_path(request), method: :put %>
+         <% end %>
+      <% end %>
 
     <% else %>
-     <br><%= link_to '<i class="icon-trash red"></i> Отменить заявку'.html_safe, notdoit_request_path(request), method: :put %>
-     <% end %>
-  <% end %>
-
-  <% else %>
-    <% if current_user.manager? || current_user.admin? %>
-      <%= link_to '<i class="icon-wrench blue"></i><br> Выполнить заявку'.html_safe, doit_request_path(request), method: :put %>
+        <% if current_user.manager? || current_user.admin? %>
+          <%= link_to '<i class="icon-wrench blue"></i><br> Выполнить заявку'.html_safe, doit_request_path(request), method: :put %>
+        <% end %>
     <% end %>
-  <% end %>
-</span>
-<span class="span5">
-<%= request.text %>
-</span>
+  </span>
 
 <% if current_user.admin? %>
-          <span class="span1">
-            
-            <%= link_to "Удалить", request, method: :delete, :class => "red", data: { confirm: "Вы уверены?" } %>
+  <span class="span5">
+    <%= request.text %>
+  </span>
+<% elsif current_user.manager? %>
+  <span class="span6">
+    <%= request.text %>
+  </span>
+<% else %>
+  <span class="span7">
+    <%= request.text %>
+  </span>
+<% end %>
 
-          </span>
+<% if current_user.admin? %>
+  <span class="span1">
+    <%= link_to "Удалить", request, method: :delete, :class => "red", data: { confirm: "Вы уверены?" } %>
+  </span>
 <% end %>
 
 </div>

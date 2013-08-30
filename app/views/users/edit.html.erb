@@ -21,25 +21,30 @@
     <%= form_for(@user) do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= f.label :name, "Ваше имя" %>
+      <%= f.text_field :name, :class => "span12" %>
 
       <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.text_field :email, :class => "span12" %>
 
       <%= f.label :agent_id, "Наименование организации, в которой Вы работаете" %>
       <%= collection_select(:user, :agent_id, Agent.all, :id, :name) %>
+
+      <%= f.label :phone, "РАБОЧИЙ телефон" %>
+      <%= f.text_field :phone, :class => "span12" %>
+
+      <%= f.label :address, "РАБОЧИЙ адрес:" %>
+      <%= f.text_field :address, :class => "span12" %>
+
+      <%= f.label :avatar, "Аватар" %>
+      <%= image_tag(@user.avatar_url, height: '120', width: '120') if @user.avatar? %>
+      <%= f.file_field :avatar %>
 
       <%= f.label :password %>
       <%= f.password_field :password %>
 
       <%= f.label :password_confirmation, "Confirm Password" %>
       <%= f.password_field :password_confirmation %>
-
-
-      <%= f.label :avatar, "Аватар" %>
-      <%= image_tag(@user.avatar_url, height: '120', width: '120') if @user.avatar? %>
-      <%= f.file_field :avatar %>
 
       <hr>
 

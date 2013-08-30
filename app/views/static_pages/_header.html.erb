@@ -46,12 +46,17 @@
 						<li class="<%=is_active('services')%>">
 							<%= link_to ".::Услуги", '/services.html' %>
 						</li>
-						<li class="<%=is_active('aricles')%>">
+						<li class="<%=is_active('articles')%>">
 							<%= link_to ".::Блог", '/articles.html' %>
 						</li>
 						<li class="<%=is_active('contacts')%>">
 							<%= link_to ".::Контакты", '/contacts.html' %>
 						</li>
+						<% unless signed_in? %>
+						<li class="<%=is_active('new')%>">
+							<%= link_to ".::Вход", '/signin.html' %>
+						</li>
+						<% end %>
 						<li class="<%=is_active('search')%>">
 							<a class="search">
 								<i class="icon-search search-btn"></i>

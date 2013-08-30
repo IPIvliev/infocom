@@ -30,12 +30,13 @@ class StaticPagesController < ApplicationController
     if @message.save
 
       require 'net/http'
+        @phone = params[:message][:phone]
+        @name = params[:message][:name]
 
-      @phone = params[:message][:phone]
-      @name = params[:message][:name]
-      url = "http://sms.ru/sms/send?api_id=9d3359eb-9224-2384-5d06-1118975a2cd2&to=79051916188&text=Инфоком-НН (сообщение) от "+@name+" "+@phone
-      uri = URI.parse(URI.encode(url.strip))
-      response = Net::HTTP.get_response(uri)
+        url = "http://sms.ru/sms/send?api_id=9d3359eb-9224-2384-5d06-1118975a2cd2&to=79036028919&text=Инфоком-НН (сообщение) от "+@name+" "+@phone
+        uri = URI.parse(URI.encode(url.strip))
+        response = Net::HTTP.get_response(uri)
+  
 
       flash[:success] = "Ваше сообщение успешно отправленно. Менеджер Инфоком-НН свяжется с вами в ближайшее время."
       redirect_to '/contacts.html'
