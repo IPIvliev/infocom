@@ -10,30 +10,26 @@
   <%= user.email %> /
   <%= user.agent.name %> /
 
-      <% if user.manager? %>
+      <% if user.status == 2 %>
       <strong class="manager"> Менеджер </strong>
-    <% elsif user.admin? %>
+    <% elsif user.status == 3 %>
       <strong class="admin"> Администратор </strong>
+    <% elsif user.status == 1 %>
+      <strong class="engineer"> Инженер </strong>
     <% else %>
       <strong> Пользователь </strong>
     <% end %>
 
-  <% if current_user.admin? && !current_user?(user) %>
+  <% if current_user.status == 3 && !current_user?(user) %>
     | <%= link_to "delete", user, method: :delete,
                                   data: { confirm: "Вы уверены?" } %>
   <% end %>
-  <% if current_user.admin? && !current_user?(user) %>
- 	<% if user.manager? %>
-	|	<%= link_to "Разжаловать из менеджеров", man_user_path(user), method: :put %>
-	<% else %>
-	|	<%= link_to "Назвачить менеджером", man_user_path(user), method: :put %>
-	<% end %>  
-  <% if user.admin? %>
-  | <%= link_to "Разжаловать из администраторов", adm_user_path(user), method: :put %>
-  <% else %>
-  | <%= link_to "Назвачить администратором", adm_user_path(user), method: :put %>
-  <% end %> 
-  <% end %>
+  <% if current_user.status == 3 && !current_user?(user) %>
+ 	    <%= form_for user, :url => changestatus_user_path(user), :html => { :class => "inbody"} do |f| %>
+      <%= f.select :status, [['Пользователь', 0], ['Инженер', 1], ['Менеджер', 2], ['Администратор', 3]] %>
+      <%= f.submit "Назначить", :class => "submit" %>
+    <% end %>
 
+  <% end %>
 
 </li>

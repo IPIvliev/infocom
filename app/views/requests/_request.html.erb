@@ -1,17 +1,17 @@
 <div class="row tbody">
   <span class="span1">
-    <%= request.id %>
+    <%= link_to request.id, request_path(request) %>
   </span>
   <span class="span1">
     <%= Russian::strftime(request.created_at, "%d %b %Y г. %H:%M") %>
   </span>
   <span class="span1">
-    <% if current_user.id == request.manager_id || current_user.admin? %>
+    <% if current_user.id == request.manager_id || current_user.status = 3 %>
 
       <% if request.finish == true %>
         <%= link_to '<i class="icon-ok green"></i> Исполнено'.html_safe, fin_request_path(request), method: :put %>
       <% elsif request.manager_id? %>
-        <% if current_user.id == request.manager_id || current_user.admin %>
+        <% if current_user.id == request.manager_id || current_user.status == 3 %>
           <%= link_to '<i class="icon-wrench blue"></i><br> В работе'.html_safe, fin_request_path(request), method: :put %>
         <% elsif current_user.manager? && current_user != request.manager_id %>
           <i class="icon-wrench blue"></i><br> В работе
@@ -30,7 +30,7 @@
     <% end %>
   </span>
 
-<% if current_user.admin? || current_user.manager? %>
+<% if current_user.status == 3 || current_user.manager? %>
   <span class="span2">
     <%= request.user.agent.name %><br>
     <%= request.user.name %> <br>
@@ -42,7 +42,7 @@
     <% if request.manager_id? %>
         <%= request.manager.name %> <br>
         <%= request.manager.phone %>
-      <% if current_user.id == request.manager_id || current_user.admin? %>
+      <% if current_user.id == request.manager_id || current_user.status == 3 %>
         <% if request.finish? %>
 
         <% else %>
@@ -51,17 +51,24 @@
       <% end %>
 
     <% else %>
-        <% if current_user.manager? || current_user.admin? %>
+        <% if current_user.status == 1 %>
           <%= link_to '<i class="icon-wrench blue"></i><br> Выполнить заявку'.html_safe, doit_request_path(request), method: :put %>
+        <% end %>
+        <% if current_user.status == 3 || current_user.status == 2 %>
+
+          <%= form_for request do |f| %>
+              <%= f.collection_select :manager_id, User.where(:status => 1), :id, :name %>
+              <%= f.submit "Назначить" %>
+          <% end %>
         <% end %>
     <% end %>
   </span>
 
-<% if current_user.admin? %>
+<% if current_user.status == 3 %>
   <span class="span5">
     <%= request.text %>
   </span>
-<% elsif current_user.manager? %>
+<% elsif current_user.status == 2 %>
   <span class="span6">
     <%= request.text %>
   </span>
@@ -71,7 +78,7 @@
   </span>
 <% end %>
 
-<% if current_user.admin? %>
+<% if current_user.status == 3 %>
   <span class="span1">
     <%= link_to "Удалить", request, method: :delete, :class => "red", data: { confirm: "Вы уверены?" } %>
   </span>

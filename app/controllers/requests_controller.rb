@@ -6,12 +6,15 @@ class RequestsController < ApplicationController
     if signed_in?
       @requests = Request.paginate(page: params[:page], :per_page => 10).order("created_at DESC").where(user_id: current_user)
 
-      if current_user.admin? || current_user.manager?
+      if current_user.status == 3 || current_user.status == 2
       @requests = Request.paginate(page: params[:page], :per_page => 10).order("created_at DESC")
       end
     end
   end
 
+  def show
+    @request = Request.find(params[:id])
+  end
 
   def new
     @request = Request.new
@@ -27,7 +30,7 @@ class RequestsController < ApplicationController
       @phone = current_user.phone
       @name = current_user.agent.name
 
-       t = User.where('admin = ? OR manager = ?', true, true).select("phone").map(&:phone).join(',')
+       t = User.where('status = ? OR status = ?', 3, 2).select("phone").map(&:phone).join(',')
 
       url = "http://sms.ru/sms/send?api_id=9d3359eb-9224-2384-5d06-1118975a2cd2&to="+t+"&text=Инфоком-НН (новая заявка) от "+@name+" "+@phone
       uri = URI.parse(URI.encode(url.strip))

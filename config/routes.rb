@@ -2,6 +2,7 @@ Infocom::Application.routes.draw do
   resources :users do
   	put :man, :on => :member
     put :adm, :on => :member
+    put :changestatus, :on => :member
   end
 
   resources :sessions, only: [:new, :create, :destroy]

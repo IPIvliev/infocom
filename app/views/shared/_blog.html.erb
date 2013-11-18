@@ -4,7 +4,7 @@
     	<li><i class="icon-calendar"></i> <%= Russian::strftime(post.created_at, "%d %B %Y") %></li>
     	<li><i class="icon-pencil"></i> <%= post.user.name %></li>
         <% if signed_in? %>
-        <% if current_user.admin?  %>
+        <% if current_user.status == 3 %>
         <li><i class="icon-trash"></i> <%= link_to "Удалить", @post, method: :delete,
                       data: { confirm: "Вы уверены?" } %> </li>
         <% end %><% end %>

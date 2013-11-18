@@ -60,4 +60,10 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def changestatus
+    user = User.find(params[:id])
+    user.update_attribute(:status, params[:user][:status])
+    redirect_to users_path
+  end
+
 end

@@ -2,7 +2,7 @@
 <div class="stats">
 <h4>Заявки</h4>
 
-<% if current_user.admin? || current_user.manager? %>
+<% if current_user.status == 3 || current_user.status == 2 %>
 <span><strong>Выполнено:</strong>
   <a href="#">12</a>
 </span>
@@ -28,10 +28,12 @@
 
 <span>Статус: 
   <a href="#">
-    <% if current_user.manager? %>
+    <% if current_user.status == 2 %>
       <strong class="manager"> Менеджер </strong>
-    <% elsif current_user.admin? %>
+    <% elsif current_user.status == 3 %>
       <strong class="admin"> Администратор </strong>
+    <% elsif current_user.status == 1 %>
+      <strong class="engineer"> Инженер </strong>
     <% else %>
       <strong> Пользователь </strong>
     <% end %>

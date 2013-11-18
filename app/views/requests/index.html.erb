@@ -32,19 +32,19 @@
           <div class="thead row">
               <span class="span1">#</span><span class="span1">Дата</span><span class="span1">Статус</span>
             
-            <% if current_user.admin? || current_user.manager? %>
+            <% if current_user.status == 3 || current_user.status == 2 %>
               <span class="span2">Орг.</span>
             <% end %>
             
               <span class="span2">Исполнитель</span>
 
-            <% if current_user.admin? %>
+            <% if current_user.status == 3 %>
               <span class="span5">Текст</span>
             <% else %>
               <span class="span6">Текст</span>
             <% end %>
 
-            <% if current_user.admin? %>
+            <% if current_user.status == 3 %>
               <span class="span1"></span>
             <% end %>
           

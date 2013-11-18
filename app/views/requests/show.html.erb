@@ -1,43 +1,84 @@
-<% provide(:title, @agent.name) %>
-<div class="row">
+<% provide(:title, @request.user.agent.name) %>
+<!--=== Breadcrumbs ===-->
+<% if signed_in? %>
+  <!--=== Breadcrumbs ===-->
+  <div class="row-fluid breadcrumbs margin-bottom-20">
+    <div class="container">
+      <h1 class="pull-left">Личный кабинет</h1>
+      <ul class="pull-right breadcrumb">
+        <li><a href="/index.html">Главная</a> <span class="divider">/</span></li>
+        <li><%= link_to "Заявки", requests_path %><span class="divider">/</span></li>
+        <li class="active"><%= @request.id %></li>
+      </ul>
+    </div><!--/container-->
+  </div><!--/breadcrumbs-->
 
-  <aside class="span4">
-    <section>
+  <%= render 'shared/usermenu' %>
 
- 			<ul class="nav nav-tabs nav-stacked">
-        	 <li><%= link_to "Все организации", agents_path %></li>
-        	 <li><%= link_to "Добавить организацию", new_agent_path %></li>
-        	</ul>
-
-    </section>
-
-
-<%= link_to 'Изменить', edit_agent_path(@agent), 
-   								  :class => 'btn btn-primary btn-warning' %>
-
-<%= link_to 'удалить', @agent, method: :delete,
-   								  :class => 'btn btn-primary btn-danger',
-                                  data: { confirm: "You sure?" } %>
-
-  </aside>
+  <div class="container"> 
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+    <% end %>  
+    <div class="row-fluid">
+      <aside class="span3">
+        <section>
+          <%= render 'shared/user_info' %>
+        </section>
+        <section>
+          <%= render 'shared/stats' %>
+        </section>
+      </aside> 
+      <div class="span9">
 
 
- <div class="span8">
-      <h1> <%= @house.name %> </h1>
+     <h1> <%= @request.user.agent.name %> </h1>
 
 <strong>Координаты:</strong>
-	<div class="well well-small">
-	 <strong>Адрес:</strong>
-	 	<% if @agent.address? %>
-	 	<%= @agent.address %> 
-		 <% else %>
-	 	нет
-	 	<% end %>
-	 <strong>Телефон:</strong> <%= @agent.phone %>
-	 <strong>E-mail:</strong> <%= @agent.e_mail %>
-	</div>
+  <div class="well well-small">
+   <p><strong>Адрес:</strong>
+    <% if @request.address? %>
+    <%= @request.address %> 
+     <% else %>
+    нет
+    <% end %></p>
+   <p><strong>Заявку подал:</strong> <%= @request.user.name %></p>
+   <p><strong>Телефон:</strong> <%= @request.phone %></p>
+   <p><strong>E-mail:</strong> <%= @request.email %></p>
+   <p><strong>Дата подачи заявки:</strong> <%= @request.created_at %></p>
+  </div>
+
+<strong>Текст заявки:</strong>
+  <div class="well well-small">
+<p><%= @request.text %></p>
+  </div>
 
 
 
- </div>
+<strong>Исполнитель:</strong>
+  <div class="well well-small">
+    <% if @request.manager_id? %>
+   <p><strong>ФИО:</strong> <%= @request.manager.name %> </p>
+   <p><strong>Телефон:</strong> <%= @request.manager.phone%></p>
+   <p><strong>E-mail:</strong> <%= @request.manager.email %></p>
+   <p><strong>Аватарка:</strong></p>
+  <% else %>
+  <p> Исполнитель не назначен. </p>
+<% end %>
 </div>
+
+<strong>Договор:</strong>
+  <div class="well well-small">
+Пока!
+  </div>
+
+<strong>Примечание:</strong>
+  <div class="well well-small">
+   Привет!
+  </div>
+
+      </div>
+    </div>
+  </div>
+<% else %>
+  Вы не зарегистрированны 
+<% end %>

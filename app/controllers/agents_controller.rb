@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 class AgentsController < ApplicationController
   def index
     @agents = Agent.paginate(page: params[:page])

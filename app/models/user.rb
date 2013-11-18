@@ -1,5 +1,7 @@
+# encoding: utf-8
+
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation, :phone, :address, :agent_id, :admin, :manager, :avatar
+  attr_accessible :name, :email, :password, :password_confirmation, :phone, :address, :agent_id, :avatar, :status
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
@@ -19,6 +21,8 @@ class User < ActiveRecord::Base
 
 
   mount_uploader :avatar, AvatarUploader
+
+
 
   private
 
