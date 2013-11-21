@@ -1,12 +1,37 @@
-// Place all the styles related to the Requests controller here.
+/* Place all the styles related to the Requests controller here.
 // They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// You can use Sass (SCSS) here: http://sass-lang.com/ */
 $green: #72C02C;
 $red: #960018;
 $blue: #0015ff;
 
 .all {
 	width: 100%;
+}
+
+.ruser {
+	width: 120px;
+	select {
+		width: 120px;
+		display: block;
+		margin-left: 5px;
+		margin-bottom: 1px;
+	}
+	input {
+		width: 120px;
+		height: 18px;
+		font-size: 14px;
+		padding: 1px;
+	}
+			.selectuser {
+			width: 120px;
+			background-color: $green;
+			margin-left: 5px;
+			line-height: normal;
+			padding-top: 0px;
+			color: #fff;
+			border: 0px;
+		}
 }
 
 .table {
