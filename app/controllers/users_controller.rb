@@ -48,18 +48,6 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  def man
-    @man = User.find(params[:id])
-    @man.toggle!(:manager)
-    redirect_to users_path
-  end
-
-    def adm
-    @adm = User.find(params[:id])
-    @adm.toggle!(:admin)
-    redirect_to users_path
-  end
-
   def changestatus
     user = User.find(params[:id])
     user.update_attribute(:status, params[:user][:status])

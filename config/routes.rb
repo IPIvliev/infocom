@@ -1,7 +1,5 @@
 Infocom::Application.routes.draw do
   resources :users do
-  	put :man, :on => :member
-    put :adm, :on => :member
     put :changestatus, :on => :member
   end
 
@@ -17,6 +15,7 @@ Infocom::Application.routes.draw do
   	put :fin, :on => :member
     put :doit, :on => :member
     put :notdoit, :on => :member
+    post :newcomment, :on => :member
   end
 
   get "index.html" => "static_pages#index"

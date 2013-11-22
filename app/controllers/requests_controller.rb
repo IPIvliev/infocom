@@ -14,6 +14,8 @@ class RequestsController < ApplicationController
 
   def show
     @request = Request.find(params[:id])
+    @comments = Comment.where(:request_id => @request)
+    @comment = Comment.new
   end
 
   def new
@@ -49,10 +51,11 @@ class RequestsController < ApplicationController
   end
 
   def update
-    @request = Request.find(params[:id])
-    if @request.update_attributes(params[:request])
+    @req = Request.find(params[:id])
+    if @req.update_attributes(params[:request])
       flash[:success] = "Данные обновлены."
-      redirect_to requests_path
+        redirect_to request_path(params[:id])
+
     else
       render 'edit'
     end
@@ -84,10 +87,23 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     if @request.update_attributes(:manager_id => nil)
       flash[:success] = "Данные обновлены."
-      redirect_to requests_path
+      redirect_to request_path(params[:id])
     else
       render 'edit'
     end
   end
+
+
+def newcomment 
+    @comment = current_user.comments.build(params[:comment])
+    if @comment.save
+      flash[:success] = "Комментарий отправлен!"
+      redirect_to request_path(params[:id])
+    else
+      flash[:error] = "Произошла ошибка при отправке комментария: комментарий не может быть пустым."
+      redirect_to request_path(params[:id])
+    end
+end
+
 
 end

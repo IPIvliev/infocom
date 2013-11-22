@@ -10,4 +10,5 @@ class Request < ActiveRecord::Base
 
 	belongs_to :user
 	belongs_to :manager, :class_name => "User", :foreign_key => 'manager_id'
+	has_many :comments
 end

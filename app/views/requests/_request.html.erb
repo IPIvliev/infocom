@@ -1,7 +1,7 @@
 <div class="row tbody">
 
   <span class="span1">
-    <%= link_to request.id, request_path(request) %>
+    <%= link_to "#{request.id}<br><i class=icon-edit></i>".html_safe, request_path(request) %>
   </span>
   <span class="span1">
     <%= Russian::strftime(request.created_at, "%d %b %Y г. %H:%M") %>
@@ -47,7 +47,7 @@
         <% if request.finish? %>
 
         <% else %>
-         <br><%= link_to '<i class="icon-trash red"></i> Отменить заявку'.html_safe, notdoit_request_path(request), method: :put %>
+         <br><%= link_to '<i class="icon-remove-circle red"></i> Отменить исполнителя'.html_safe, notdoit_request_path(request), method: :put %>
          <% end %>
       <% end %>
 
@@ -81,7 +81,7 @@
 
 <% if current_user.status == 3 %>
   <span class="span1">
-    <%= link_to "Удалить", request, method: :delete, :class => "red", data: { confirm: "Вы уверены?" } %>
+    <%= link_to "<i class=icon-trash></i>Удалить".html_safe, request, method: :delete, :class => "red", data: { confirm: "Вы уверены?" } %>
   </span>
 <% end %>
 

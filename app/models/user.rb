@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   belongs_to :agent
   has_many :requests
   has_many :posts
+  has_many :comments
 
 
   mount_uploader :avatar, AvatarUploader
