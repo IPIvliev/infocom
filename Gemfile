@@ -12,6 +12,9 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'russian'
 gem 'thin'
 
+# Text 
+gem 'bootstrap-wysihtml5-rails'
+
 #images
 gem 'carrierwave'
 gem 'rmagick', '2.13.2'

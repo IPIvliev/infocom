@@ -68,6 +68,7 @@
 <% if current_user.status == 3 %>
   <span class="span5">
     <%= request.text %>
+    <%= " (#{request.comments.count} #{Russian.p(request.comments.count, "комментарий", "комментария", "комментариев")})" %>
   </span>
 <% elsif current_user.status == 2 %>
   <span class="span6">
@@ -76,6 +77,7 @@
 <% else %>
   <span class="span7">
     <%= request.text %>
+
   </span>
 <% end %>
 

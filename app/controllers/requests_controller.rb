@@ -10,6 +10,7 @@ class RequestsController < ApplicationController
       @requests = Request.paginate(page: params[:page], :per_page => 10).order("created_at DESC")
       end
     end
+    @comments = Comment.where(:request_id => request)
   end
 
   def show
@@ -105,5 +106,10 @@ def newcomment
     end
 end
 
+def deletecomment
+    Comment.find(params[:id]).destroy
+    flash[:success] = "Сообщение уничтожено."
+    redirect_to request_path(params[:req])
+end
 
 end

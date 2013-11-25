@@ -14,6 +14,76 @@ $blue: #0015ff;
 	margin-right: 10px;
 }
 
+.wysihtml5 {
+	width: 98%;
+	height: 180px;
+}
+
+.newcomment {
+	width: 120px;
+	float: right;
+	background-color: $green;
+	color: #fff;
+	border: 0px;
+	margin-right: 10px;
+}
+
+/* Comments */
+.comment {
+	display: block;
+	min-height: 60px;
+	margin-bottom: 20px;
+	
+	.commentavatar {
+		float: left;
+	}
+	.commenttitle {
+		position: relative;
+		margin-left: 60px;
+		height: 15px;
+		width: 85%;
+
+		.commentusername {
+			font-weight: bold;
+			display: inline-block;
+			a {
+				text-decoration: none;
+			}
+		}
+		.commentedit {
+			font-weight: bold;
+			display: inline-block;
+			margin-left: 10px;
+		
+		}
+		.commentdelete {
+			display: inline-block;
+			
+			a {
+			font-weight: bold;
+			color: $red;
+			text-decoration: none;
+			}
+
+		}
+		.commentdate {
+			position: absolute;
+			right: 12px;
+			top: 10px;
+			font-size: 70%;
+		}
+	}
+
+	.commenttext {
+		margin-left: 70px;
+		vertical-align: baseline;
+		margin-top: -15px;
+	}
+}
+
+
+
+
 .ruser {
 	width: 120px;
 	select {

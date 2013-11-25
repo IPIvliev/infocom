@@ -16,6 +16,8 @@ Infocom::Application.routes.draw do
     put :doit, :on => :member
     put :notdoit, :on => :member
     post :newcomment, :on => :member
+    delete :deletecomment, :on => :member
+    get :deletecomment, :on => :member
   end
 
   get "index.html" => "static_pages#index"

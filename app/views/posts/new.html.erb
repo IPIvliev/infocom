@@ -49,7 +49,7 @@
 
         <div class="span12">
           <%= f.label :text, "Текст поста" %>
-          <%= f.text_area :text, :class => "all" %>
+          <%= f.text_area :text, :class => "all wysihtml5" %>
         </div>
         <div class="span12">
       <%= f.submit "Опубликовать", class: "btn-u" %>
@@ -57,3 +57,12 @@
     <% end %>
 
 </div></div></div>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $('.wysihtml5').each(function(i, elem) {
+      $(elem).wysihtml5();
+    });
+
+  })
+</script>

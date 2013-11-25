@@ -86,14 +86,39 @@
 <strong>Комментарии:</strong>
   <div class="well well-small">
    <% @comments.each do |c| %>
-      <%= c.text %><br>
+   <div class="comment">
+      <div class="commentavatar">
+        <% if c.user.avatar? %>
+          <%= image_tag(c.user.avatar, height: '52', width: '52') %>
+        <% else %>
+          <%= image_tag('/assets/unnamed.jpg', width: '52', height: '52') %>
+        <% end %>
+      </div>
+      <div class="alert alert-info commenttitle">
+        <div class="commentusername">
+          <%= link_to c.user.name, c.user %>
+        </div>
+        <% if current_user == c.user || current_user.status == 3 %>
+
+        <div class="commentdelete">
+          <%= link_to "<i class=icon-trash></i>".html_safe, deletecomment_request_path(c, :req => @request), action: :deletecomment, data: { confirm: "Вы уверены?" } %>
+        </div>
+        <% end %>
+        <div class="commentdate">
+          <%= Russian::strftime(c.created_at, "%a, %e %B %Y %H:%M") %>
+        </div>
+      </div>
+      <div class="commenttext">
+        <%= c.text.html_safe %>
+      </div>
+   </div>
    <% end %>
   </div>
   <div class="well well-small">
-              <%= form_for @comment, :url => {:action => "newcomment"} do |f| %>
-              <%= f.text_area :text %>
-              <%= f.hidden_field :request_id, :value => @request.id %>
-              <%= f.submit "Добавить комментарий" %>
+          <%= form_for @comment, :url => {:action => "newcomment"} do |f| %>
+            <%= f.text_area :text, :id => "some-textarea", :class => "wysihtml5" %>
+            <%= f.hidden_field :request_id, :value => @request.id %>
+            <%= f.submit "Добавить комментарий", :class => "newcomment" %>
           <% end %>
   </div>
       </div>
@@ -102,3 +127,13 @@
 <% else %>
   Вы не зарегистрированны 
 <% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $('.wysihtml5').each(function(i, elem) {
+      $(elem).wysihtml5();
+    });
+
+  })
+</script>

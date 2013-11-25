@@ -1,5 +1,9 @@
 <a href="<%= user_path(current_user) %>">
-  <%= gravatar_for current_user, size: 52 %>
+<% if current_user.avatar? %>
+  <%= image_tag(current_user.avatar, height: '82', width: '82') %>
+<% else %>
+  <%= image_tag('/assets/unnamed.jpg', width: '82', height: '82') %>
+<% end %>
 </a>
 <h1>
   <%= current_user.name %>
