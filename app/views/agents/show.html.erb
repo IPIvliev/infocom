@@ -35,10 +35,16 @@
 
 <strong>Координаты:</strong>
   <div class="well well-small">
-
-	<p><strong>Контактное лицо:</strong> <%= @agent.director %></p>
    <p><strong>Телефон:</strong> <%= @agent.phone %></p>
+   <p><strong>Факс:</strong> <%= @agent.fax %></p>
    <p><strong>E-mail:</strong> <%= @agent.email %></p>
+  </div>
+
+<strong>Контактное лицо:</strong>
+  <div class="well well-small">
+   <p><strong>ФИО:</strong> <%= @agent.dealer %></p>
+   <p><strong>Телефон:</strong> <%= @agent.dealer_phone %></p>
+   <p><strong>E-mail:</strong> <%= @agent.dealer_email %></p>
   </div>
 
 <strong>Финансовые данные:</strong>
@@ -56,17 +62,7 @@
 <strong>Статистика:</strong>
   <div class="well well-small">
 <p><strong>Подано заявок:</strong> <%= @agent.requests.count %> </p>
-<p><strong>Исполненно заявок:</strong> <%= @agent.requests.where(:finish => 1).count %> </p>
-  </div>
-
-<strong>Договор:</strong>
-  <div class="well well-small">
-Привет!
-  </div>
-
-<strong>Примечание:</strong>
-  <div class="well well-small">
-   Привет!
+<p><strong>Исполненно заявок:</strong> <%= @agent.requests.where(:finish => true).count %> </p>
   </div>
 
       </div>

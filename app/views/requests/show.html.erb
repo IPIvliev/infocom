@@ -57,61 +57,65 @@
 <strong>Исполнитель:</strong>
   <div class="well well-small">
     <% if @request.manager_id? %>
-    <div class="avainrequest">
-      <% if @request.manager.avatar? %>
-        <%= image_tag(@request.manager.avatar_url, height: '82', width: '82') %>
-      <% else %>
-        <%= image_tag('/assets/unnamed.jpg', width: '82', height: '82') %>
-      <% end %>
-    </div>
-   <p><strong>ФИО:</strong> <%= @request.manager.name %> </p>
-   <p><strong>Телефон:</strong> <%= @request.manager.phone%></p>
-   <p><strong>E-mail:</strong> <%= @request.manager.email %></p>
-   <p><%= link_to '<i class="icon-remove-circle red"></i> Отменить исполнителя'.html_safe, notdoit_request_path(@request), method: :put %></p>
+      <div class="avainrequest">
+        <% if @request.manager.avatar? %>
+          <%= image_tag(@request.manager.avatar_url, height: '82', width: '82') %>
+        <% else %>
+          <%= image_tag('/assets/unnamed.jpg', width: '82', height: '82') %>
+        <% end %>
+      </div>
+     <p><strong>ФИО:</strong> <%= @request.manager.name %> </p>
+     <p><strong>Телефон:</strong> <%= @request.manager.phone%></p>
+     <p><strong>E-mail:</strong> <%= @request.manager.email %></p>
+     <p><%= link_to '<i class="icon-remove-circle red"></i> Отменить исполнителя'.html_safe, notdoit_request_path(@request), method: :put if current_user.admin_manager? %></p>
   <% else %>
   <p> Исполнитель не назначен. </p>
-
-            <%= form_for @request, :html => { :class => "ruser"} do |f| %>
-              <%= f.collection_select :manager_id, User.where(:status => 1), :id, :name %>
-              <%= f.submit "назначить", :class => "selectuser" %>
+      <% if current_user.admin_manager? %>
+          <%= form_for @request, :html => { :class => "ruser"} do |f| %>
+            <%= f.collection_select :manager_id, User.where(:status => 1), :id, :name %>
+            <%= f.submit "назначить", :class => "selectuser" %>
           <% end %>
-<% end %>
-</div>
-
-<strong>Договор:</strong>
-  <div class="well well-small">
-В разработке!
+      <% end %>
+    <% end %>
   </div>
 
 <strong>Комментарии:</strong>
   <div class="well well-small">
-   <% @comments.each do |c| %>
-   <div class="comment">
-      <div class="commentavatar">
-        <% if c.user.avatar? %>
-          <%= image_tag(c.user.avatar, height: '52', width: '52') %>
-        <% else %>
-          <%= image_tag('/assets/unnamed.jpg', width: '52', height: '52') %>
-        <% end %>
-      </div>
-      <div class="alert alert-info commenttitle">
-        <div class="commentusername">
-          <%= link_to c.user.name, c.user %>
+   <% if !@comments.empty? %>
+     <% @comments.each do |c| %>
+     <div class="comment">
+        <div class="commentavatar">
+          <% if c.user.avatar? %>
+            <%= image_tag(c.user.avatar, height: '52', width: '52') %>
+          <% else %>
+            <%= image_tag('/assets/unnamed.jpg', width: '52', height: '52') %>
+          <% end %>
         </div>
-        <% if current_user == c.user || current_user.status == 3 %>
+        <div class="alert alert-info commenttitle">
+          <div class="commentusername">
+            <%= link_to c.user.name, c.user %>
 
-        <div class="commentdelete">
-          <%= link_to "<i class=icon-trash></i>".html_safe, deletecomment_request_path(c, :req => @request), action: :deletecomment, data: { confirm: "Вы уверены?" } %>
+            | <%= write_user_status(c.user.status) %> |
+
+
+          </div>
+          <% if current_user == c.user || current_user.admin? %>
+
+          <div class="commentdelete">
+            <%= link_to "<i class=icon-trash></i>".html_safe, deletecomment_request_path(c, :req => @request), action: :deletecomment, data: { confirm: "Вы уверены?" } %>
+          </div>
+          <% end %>
+          <div class="commentdate">
+            <%= Russian::strftime(c.created_at, "%a, %e %B %Y %H:%M") %>
+          </div>
         </div>
-        <% end %>
-        <div class="commentdate">
-          <%= Russian::strftime(c.created_at, "%a, %e %B %Y %H:%M") %>
+        <div class="commenttext">
+          <%= c.text.html_safe %>
         </div>
-      </div>
-      <div class="commenttext">
-        <%= c.text.html_safe %>
-      </div>
-   </div>
+     </div>
+     <% end %>
+   <% else %>
+    Комментарии пока отсутствуют.
    <% end %>
   </div>
   <div class="well well-small">

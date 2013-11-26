@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module UsersHelper
 
   # Returns the Gravatar (http://gravatar.com/) for the given user.
@@ -7,4 +9,13 @@ module UsersHelper
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
+
+  def write_user_status(status)
+    return "<strong class=admin>Администратор</strong>".html_safe if status == 3
+    return "<strong class=manager>Менеджер</strong>".html_safe if status == 2
+    return "<strong class=engineer>Инженер</strong>".html_safe if status == 1
+    return "<strong class=user>Пользователь</strong>".html_safe if status == 0
+  end
+
+
 end

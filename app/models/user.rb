@@ -23,7 +23,29 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
+  def admin?
+    status == 3
+  end
 
+  def manager?
+    status == 2
+  end
+
+  def engineer?
+    status == 1
+  end
+
+ def manager_engineer?
+    status == 1 || status == 2
+  end
+
+  def admin_manager?
+    status == 2 || status == 3
+  end
+
+  def admin_manager_engineer?
+    status == 1 || status == 2 || status == 3
+  end
 
   private
 

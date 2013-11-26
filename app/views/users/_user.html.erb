@@ -5,31 +5,26 @@
     <%= image_tag('/assets/unnamed.jpg', width: '52', height: '52') %>
   <% end %>
 
-  <%= link_to user.name, user %> /
-    <%= user.requests.count %> /
-  <%= user.email %> /
-  <%= user.agent.name %> /
+  <%= link_to user.name, user %> |
+  <%= user.requests.count %> |
+  <%= user.email %> |
+  <%= user.agent.name %> |
+  <%= write_user_status(user.status) %>
 
-      <% if user.status == 2 %>
-      <strong class="manager"> Менеджер </strong>
-    <% elsif user.status == 3 %>
-      <strong class="admin"> Администратор </strong>
-    <% elsif user.status == 1 %>
-      <strong class="engineer"> Инженер </strong>
-    <% else %>
-      <strong> Пользователь </strong>
-    <% end %>
-
-  <% if current_user.status == 3 && !current_user?(user) %>
+  <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, method: :delete,
                                   data: { confirm: "Вы уверены?" } %>
   <% end %>
-  <% if current_user.status == 3 && !current_user?(user) %>
- 	    <%= form_for user, :url => changestatus_user_path(user), :html => { :class => "inbody"} do |f| %>
-      <%= f.select :status, [['Пользователь', 0], ['Инженер', 1], ['Менеджер', 2], ['Администратор', 3]] %>
-      <%= f.submit "Назначить", :class => "submit" %>
+  <% if current_user.admin_manager? && !current_user?(user) %>
+	  <%= form_for user, :url => changestatus_user_path(user), :html => { :class => "inbody"} do |f| %>
+      <% if current_user.admin? %>
+        <%= f.select :status, [['Пользователь', 0], ['Инженер', 1], ['Менеджер', 2], ['Администратор', 3]]  %>
+        <%= f.submit "Назначить", :class => "submit" %>
+      <% end %>
+      <% if current_user.manager? && !user.admin_manager? %>
+        <%= f.select :status, [['Пользователь', 0], ['Инженер', 1]] %>
+        <%= f.submit "Назначить", :class => "submit" %>
+      <% end %>
     <% end %>
-
   <% end %>
-
 </li>

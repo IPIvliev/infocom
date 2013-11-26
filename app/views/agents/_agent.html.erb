@@ -1,7 +1,22 @@
-<li>
-    <%= agent.id %> /
-  <%= link_to agent.name, agent %> /
-  <%= agent.sum %> /
-   <%= agent.requests.count %> /
- 
-</li>
+<div class="row tbody">
+
+  <span class="span1">
+    <%= agent.id %>
+  </span>
+  <span class="span2">
+    <%= link_to agent.name, agent %>
+  </span>
+  <span class="span2">
+	<%= agent.phone %>
+  </span>
+  <span class="span2">
+    <%= agent.requests.count %>
+  </span>
+  <span class="span3">
+  	<%= number_to_currency(agent.sum, :unit => "руб.", :separator => ",", :delimiter => " ", :format => "%n %u") %>
+  </span>
+  <span class="span2">
+  	<%= agent.dogovor_date %>
+  </span>
+
+</div>

@@ -11,17 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131122145339) do
+ActiveRecord::Schema.define(:version => 20131126121218) do
 
   create_table "agents", :force => true do |t|
     t.string   "name"
     t.string   "email"
     t.date     "dogovor_date"
     t.integer  "sum"
-    t.string   "director"
     t.string   "phone"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "fax"
+    t.string   "dealer"
+    t.string   "dealer_phone"
+    t.string   "dealer_email"
   end
 
   create_table "comments", :force => true do |t|

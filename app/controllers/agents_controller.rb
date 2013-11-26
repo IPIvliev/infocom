@@ -16,10 +16,10 @@ class AgentsController < ApplicationController
     def create
     @agent = Agent.new(params[:agent])
     if @agent.save
-      flash[:success] = "Поздравляем Вас с успешной регистрацией. Теперь Вы можете подать заявку"
+      flash[:success] = "Новая компания успешно зарегистрированна."
       redirect_to agents_path
     else
-      flash.now[:error] = 'Регистрация не удалась. Вы не заполнили, либо не правильно заполнили одно из полей.'
+      flash.now[:error] = "Регистрация компании не удалась."
       render 'new'
     end
   end

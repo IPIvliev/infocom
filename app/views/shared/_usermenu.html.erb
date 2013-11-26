@@ -9,13 +9,13 @@
 
           <li><%= link_to "Подать заявку", new_request_path %></li>
           <li><a href="/help.html">Помощь</a></li>
-          <% if current_user.status == 3 || current_user.status == 2 %>
+          <% if current_user.admin_manager? %>
           <li><%= link_to "Все заявки", requests_path %></li>
           <% else %>
           <li><%= link_to "Мои заявки", requests_path %></li>
           <% end %>
 
-<% if current_user.status == 3 || current_user.status == 2 %>
+<% if current_user.admin_manager? %>
 
           <li id="fat-menu" class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -29,7 +29,7 @@
 
 <% end %>
 
-<% if current_user.status == 3 %>
+<% if current_user.admin_manager? %>
 
           <li id="fat-menu" class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -52,11 +52,11 @@
               <li><%= link_to "Изменить данные", edit_user_path(current_user) %></li>
             </ul>
           </li> 
-          <% if current_user.status == 3 || current_user.status == 2 %>
+          <% if current_user.admin_manager? %>
           <li><%= link_to "Пользователи", users_path %></li>
           <% end %>
 
-<% if current_user.status == 3 %>
+<% if current_user.admin_manager_engineer? %>
 
           <li id="fat-menu" class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">

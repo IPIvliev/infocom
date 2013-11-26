@@ -25,17 +25,21 @@
       </section>
     </aside>
 
-    <div class="span9">
-
-<%= will_paginate %>
-
-<ul class="users">
-  <%= render @agents %>
-</ul>
-
-<%= will_paginate %>
+      <div class="span9">
+        <div class="table">
+          <div class="thead row">
+              <span class="span1">#</span>
+              <span class="span2">Наименование</span>
+              <span class="span2">Телефон</span>
+              <span class="span2">Заявки</span>
+              <span class="span3">Сумма договора</span>
+              <span class="span2">Дата заключения</span>
+          </div>
+            <%= render @agents %>
+            <%= will_paginate %>
+        </div>  
+      </div>
 
 <% end %>
-</div>
 </div>
 </div>

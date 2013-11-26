@@ -33,38 +33,41 @@
 
    <%= form_for(@agent) do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
-     <div class="span5 area">
-        <%= f.label :name, "Наименование организации" %>
-        <%= f.text_field :name %>
-         </div>
-         <div class="span5 area"> 
-        <%= f.label :email, "Адрес электронной почты" %>
-        <%= f.text_field :email %>
-     </div>
 
-         <div class="span5 area">
-        <%= f.label :phone, "Телефон ответственного" %>
-        <%= f.text_field :phone %>
-         </div>
-         <div class="span5 area"> 
-        <%= f.label :director, "ФИО ответственного" %>
-        <%= f.text_field :director %>
-     </div>
+<strong>Организация</strong>
+  <div class="well well-small">
+    <%= f.text_field :name, :placeholder => "Наименование организации" %>
+  </div> 
 
+<strong>Координаты:</strong>
+  <div class="well well-small">
+    <p><%= f.text_field :email, :placeholder => "Электронная почта" %></p>
+    <p><%= f.text_field :phone, :placeholder => "Телефон организации" %></p>
+    <p><%= f.text_field :fax, :placeholder => "Факс" %></p>
+  </div>  
 
-<div class="row-fluid">
-        <div class="span4">
-        <%= f.label :sum, "Сумма по договору" %>
-        <%= f.text_field :sum, :class => "input-xxlarge" %>
-        </div></div>
-<div class="row-fluid">
-        <div class="span12">
-        <%= f.label :dagovor_date, "Дата заключения договора" %>
-        <%= f.date_select :dogovor_date %>
-        </div>
-      <%= f.submit "Подать заявку", class: "btn-u" %>
-    <% end %>
-</div>
+<strong>Ответственное лицо:</strong>
+  <div class="well well-small">
+    <p><%= f.text_field :dealer, :placeholder => "ФИО" %></p>
+    <p><%= f.text_field :dealer_phone, :placeholder => "Телефон" %></p>
+    <p><%= f.text_field :dealer_email, :placeholder => "Электронная почта" %></p>
+  </div>
+
+<strong>Договор:</strong>
+  <div class="well well-small">
+      <div class="input-append">
+        <%= f.text_field :sum, :class => "input-xxlarge", :placeholder => "Стоимость договора" %>
+        <span class="add-on">руб.</span>
+      </div>
+    <p>
+      <strong>Дата заключения:</strong>
+      <%= f.date_select :dogovor_date %>
+    </p>
+  </div>
+
+  <%= f.submit "Добавить организацию", class: "btn-u" %>
+  <% end %>
+
 </div>
 </div>
 </div>

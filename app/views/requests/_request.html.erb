@@ -7,14 +7,14 @@
     <%= Russian::strftime(request.created_at, "%d %b %Y г. %H:%M") %>
   </span>
   <span class="span1">
-    <% if current_user.id == request.manager_id || current_user.status = 3 %>
+    <% if current_user.id == request.manager_id || current_user.admin_manager? %>
 
       <% if request.finish == true %>
         <%= link_to '<i class="icon-ok green"></i> Исполнено'.html_safe, fin_request_path(request), method: :put %>
       <% elsif request.manager_id? %>
-        <% if current_user.id == request.manager_id || current_user.status == 3 %>
+        <% if current_user.id == request.manager_id || current_user.admin_manager? %>
           <%= link_to '<i class="icon-wrench blue"></i><br> В работе'.html_safe, fin_request_path(request), method: :put %>
-        <% elsif current_user.manager? && current_user != request.manager_id %>
+        <% elsif current_user.engineer? && current_user != request.manager_id %>
           <i class="icon-wrench blue"></i><br> В работе
         <% end %>
       <% else %>
@@ -31,7 +31,7 @@
     <% end %>
   </span>
 
-<% if current_user.status == 3 || current_user.manager? %>
+<% if current_user.admin_manager_engineer? %>
   <span class="span2">
     <%= request.user.agent.name %><br>
     <%= request.user.name %> <br>
@@ -43,7 +43,7 @@
     <% if request.manager_id? %>
         <%= request.manager.name %> <br>
         <%= request.manager.phone %>
-      <% if current_user.id == request.manager_id || current_user.status == 3 %>
+      <% if current_user.id == request.manager_id || current_user.admin_manager? %>
         <% if request.finish? %>
 
         <% else %>
@@ -52,10 +52,10 @@
       <% end %>
 
     <% else %>
-        <% if current_user.status == 1 %>
+        <% if current_user.engineer? %>
           <%= link_to '<i class="icon-wrench blue"></i><br> Выполнить заявку'.html_safe, doit_request_path(request), method: :put %>
         <% end %>
-        <% if current_user.status == 3 || current_user.status == 2 %>
+        <% if current_user.admin_manager? %>
 
           <%= form_for request, :html => { :class => "ruser"} do |f| %>
               <%= f.collection_select :manager_id, User.where(:status => 1), :id, :name %>
@@ -65,23 +65,25 @@
     <% end %>
   </span>
 
-<% if current_user.status == 3 %>
+<% if current_user.admin? %>
   <span class="span5">
     <%= request.text %>
     <%= " (#{request.comments.count} #{Russian.p(request.comments.count, "комментарий", "комментария", "комментариев")})" %>
   </span>
-<% elsif current_user.status == 2 %>
+<% elsif current_user.manager_engineer? %>
   <span class="span6">
     <%= request.text %>
+    <%= " (#{request.comments.count} #{Russian.p(request.comments.count, "комментарий", "комментария", "комментариев")})" %>
   </span>
 <% else %>
   <span class="span7">
     <%= request.text %>
+    <%= " (#{request.comments.count} #{Russian.p(request.comments.count, "комментарий", "комментария", "комментариев")})" %>
 
   </span>
 <% end %>
 
-<% if current_user.status == 3 %>
+<% if current_user.admin? %>
   <span class="span1">
     <%= link_to "<i class=icon-trash></i>Удалить".html_safe, request, method: :delete, :class => "red", data: { confirm: "Вы уверены?" } %>
   </span>
