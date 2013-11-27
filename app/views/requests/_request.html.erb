@@ -7,21 +7,41 @@
     <%= Russian::strftime(request.created_at, "%d %b %Y г. %H:%M") %>
   </span>
   <span class="span1">
-    <% if current_user.id == request.manager_id || current_user.admin_manager? %>
+    <% if current_user.admin_manager? %>
 
-      <% if request.finish == true %>
-        <%= link_to '<i class="icon-ok green"></i> Исполнено'.html_safe, fin_request_path(request), method: :put %>
-      <% elsif request.manager_id? %>
-        <% if current_user.id == request.manager_id || current_user.admin_manager? %>
-          <%= link_to '<i class="icon-wrench blue"></i><br> В работе'.html_safe, fin_request_path(request), method: :put %>
-        <% elsif current_user.engineer? && current_user != request.manager_id %>
-          <i class="icon-wrench blue"></i><br> В работе
-        <% end %>
-      <% else %>
+      <% if request.finish == 2 %>
+        <%= link_to '<i class="icon-ok green"></i> Исполнено'.html_safe, fin_request_path(request, :work => 1), method: :put %>
+ 
+      <% elsif request.finish == 1 %>
+
+          <%= link_to '<i class="icon-wrench blue"></i><br> Отработано'.html_safe, fin_request_path(request, :work => 2), method: :put %>
+  
+      <% elsif request.finish == 0 && request.manager_id? %>
+        <%= link_to '<i class="icon-wrench yellow"></i><br> В работе'.html_safe, fin_request_path(request, :work => 1), method: :put %>
+
+      <% elsif request.finish == 0 && !request.manager_id?%>
         <i class="icon-bolt red"></i><br> Обработка
       <% end %>
+
+    <% elsif current_user.engineer? %>
+
+      <% if request.finish == 2 %>
+        <i class="icon-ok green"></i> Исполнено
+        <% end %>
+ 
+      <% if request.finish == 1 %>
+      <%= link_to '<i class="icon-wrench blue"></i><br> Отработано'.html_safe, fin_request_path(request, :work => 0), method: :put %>
+
+      <% elsif request.finish == 0 && request.manager_id? %>
+         <%= link_to '<i class="icon-wrench yellow"></i><br> В работе'.html_safe, fin_request_path(request, :work => 1), method: :put %>
+  
+      <% elsif request.finish == 0 && !request.manager_id? %>
+        <i class="icon-bolt red"></i><br> Обработка
+
+      <% end %>
+
     <% else %>
-      <% if request.finish == true %>
+      <% if request.finish == 2 %>
         <i class="icon-ok green"></i> Исполнено
       <% elsif request.manager_id? %>
         <i class="icon-wrench blue"></i><br> В работе
@@ -33,7 +53,7 @@
 
 <% if current_user.admin_manager_engineer? %>
   <span class="span2">
-    <%= request.user.agent.name %><br>
+    <%= link_to request.user.agent.name, request.user.agent %><br>
     <%= request.user.name %> <br>
     <%= request.user.phone %>
   </span>
@@ -44,9 +64,7 @@
         <%= request.manager.name %> <br>
         <%= request.manager.phone %>
       <% if current_user.id == request.manager_id || current_user.admin_manager? %>
-        <% if request.finish? %>
-
-        <% else %>
+        <% if request.finish == 1 || request.finish == 0 %>
          <br><%= link_to '<i class="icon-remove-circle red"></i> Отменить исполнителя'.html_safe, notdoit_request_path(request), method: :put %>
          <% end %>
       <% end %>

@@ -53,7 +53,7 @@
             </ul>
           </li> 
           <% if current_user.admin_manager? %>
-          <li><%= link_to "Пользователи", users_path %></li>
+            <li><%= link_to "Пользователи", users_path %></li>
           <% end %>
 
 <% if current_user.admin_manager_engineer? %>

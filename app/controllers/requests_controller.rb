@@ -55,7 +55,7 @@ class RequestsController < ApplicationController
     @req = Request.find(params[:id])
     if @req.update_attributes(params[:request])
       flash[:success] = "Данные обновлены."
-        redirect_to request_path(params[:id])
+        redirect_to request_path#(params[:id])
 
     else
       render 'edit'
@@ -70,7 +70,7 @@ class RequestsController < ApplicationController
 
   def fin
     @fin = Request.find(params[:id])
-    @fin.toggle!(:finish)
+    @fin.update_attribute(:finish, params[:work])
     redirect_to requests_path
   end
 
@@ -87,8 +87,9 @@ class RequestsController < ApplicationController
   def notdoit
     @request = Request.find(params[:id])
     if @request.update_attributes(:manager_id => nil)
+      @request.update_attribute(:finish, 0)
       flash[:success] = "Данные обновлены."
-      redirect_to request_path(params[:id])
+      redirect_to requests_path#(params[:id])
     else
       render 'edit'
     end

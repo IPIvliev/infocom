@@ -62,7 +62,7 @@
 <strong>Статистика:</strong>
   <div class="well well-small">
 <p><strong>Подано заявок:</strong> <%= @agent.requests.count %> </p>
-<p><strong>Исполненно заявок:</strong> <%= @agent.requests.where(:finish => true).count %> </p>
+<p><strong>Исполненно заявок:</strong> <%= @agent.requests.where(:finish => 2).count %> </p>
   </div>
 
       </div>
