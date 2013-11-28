@@ -35,8 +35,16 @@ class User < ActiveRecord::Base
     status == 1
   end
 
+  def user?
+    status == 0
+  end
+
  def manager_engineer?
     status == 1 || status == 2
+  end
+
+  def admin_engineer?
+    status == 1 || status == 3
   end
 
   def admin_manager?

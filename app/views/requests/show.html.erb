@@ -49,9 +49,18 @@
 
 <strong>Текст заявки:</strong>
   <div class="well well-small">
-<p><%= @request.text %></p>
+    <p><%= @request.text %></p>
   </div>
 
+<strong>История заявки:</strong>
+  <div class="well well-small">
+    <p>
+      <% @request.hists.each do |h| %>
+        <%= "Подача заявки: #{h.date}" %><br>
+
+      <% end %>
+    </p>
+  </div>
 
 
 <strong>Исполнитель:</strong>

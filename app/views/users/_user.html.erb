@@ -19,7 +19,13 @@
   </span>
 
   <span class="span2">
-    <%= user.requests.count %>
+    <% if user.admin_engineer? %>
+    <strong>Подано заявок:</strong> <%= user.requests.count %> <br>
+    Заявок в работе: <%= Request.where('manager_id = ? AND (finish = ? OR finish = ?)', user, 0, 1).count %><br>
+    Заявок выполнено: <%= Request.where('manager_id = ? AND finish = ?', user, 2).count %>
+    <% else %>
+    <strong>Подано заявок:</strong> <%= user.requests.count %> <br>
+    <% end %>
   </span>
   <span class="span2">
     <%= user.phone %>

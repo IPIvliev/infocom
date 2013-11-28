@@ -2,14 +2,15 @@
 <div class="stats">
 <h4>Заявки</h4>
 
-<% if current_user.status == 3 || current_user.status == 2 %>
-<span><strong>Выполнено:</strong>
-  <a href="#">12</a>
-</span>
+<% if current_user.admin_engineer? %>
 <span><strong>В работе:</strong>
-  <a href="#">12</a>
+  <%= link_to Request.where('manager_id = ? AND (finish = ? OR finish = ?)', current_user, 0, 1).count %>
 </span>
-<% else %>
+<span><strong>Выполнено:</strong>
+  <%= link_to Request.where('manager_id = ? AND finish = ?', current_user, 2).count %>
+</span>
+
+<% elsif current_user.user? %>
 <span><strong>Подано заявок:</strong>
   <a href="#"><%= current_user.requests.count %></a>
 </span>

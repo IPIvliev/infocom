@@ -39,6 +39,10 @@ class RequestsController < ApplicationController
       uri = URI.parse(URI.encode(url.strip))
       response = Net::HTTP.get_response(uri)
 
+      # Добавить запись о сроках подачи заявки
+
+      @request.hists.create(:status => 1, :date => @request.created_at)
+
       flash[:success] = "Заявка успешно принята! Наш менеджер свяжется с Вами по телефону в самое ближайшее время."
       redirect_to requests_path
     else
@@ -55,6 +59,9 @@ class RequestsController < ApplicationController
     @req = Request.find(params[:id])
     if @req.update_attributes(params[:request])
       flash[:success] = "Данные обновлены."
+
+      @req.hists.create(:status => 1, :date => @req.updated_at)
+
         redirect_to request_path#(params[:id])
 
     else
@@ -71,6 +78,7 @@ class RequestsController < ApplicationController
   def fin
     @fin = Request.find(params[:id])
     @fin.update_attribute(:finish, params[:work])
+    @fin.hists.create(:status => 4, :date => @fin.updated_at)
     redirect_to requests_path
   end
 
@@ -88,6 +96,9 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     if @request.update_attributes(:manager_id => nil)
       @request.update_attribute(:finish, 0)
+
+      @request.hists.create(:status => 3, :date => @request.updated_at)
+
       flash[:success] = "Данные обновлены."
       redirect_to requests_path#(params[:id])
     else
