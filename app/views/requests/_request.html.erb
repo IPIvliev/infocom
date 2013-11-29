@@ -17,7 +17,7 @@
           <%= link_to '<i class="icon-wrench blue"></i><br> Отработано'.html_safe, fin_request_path(request, :work => 2), method: :put %>
   
       <% elsif request.finish == 0 && request.manager_id? %>
-        <%= link_to '<i class="icon-wrench yellow"></i><br> В работе'.html_safe, fin_request_path(request, :work => 1), method: :put %>
+        <%= link_to '<i class="icon-wrench yellow"></i><br> В работе'.html_safe, fin_request_path(request, :work => 1, :more => 10), method: :put %>
 
       <% elsif request.finish == 0 && !request.manager_id?%>
         <i class="icon-bolt red"></i><br> Обработка
