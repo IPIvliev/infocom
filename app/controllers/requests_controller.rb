@@ -79,7 +79,9 @@ class RequestsController < ApplicationController
     @fin = Request.find(params[:id])
     @fin.update_attribute(:finish, params[:work])
 
+    if !params[:more]
       @fin.hists.create(:status => params[:work], :date => @fin.updated_at)
+    end
 
     if params[:more]
       @fin.hists.create(:status => 7, :date => @fin.updated_at)
