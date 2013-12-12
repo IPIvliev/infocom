@@ -38,23 +38,23 @@
 				<div class="span8">
 					<ul class="nav nav-pills">
 						<li class="<%=is_active('index')%>">
-							<%= link_to ".::Главная", '/index.html' %>
+							<%= link_to "Главная", '/index.html' %>
 						</li>
 						<li class="<%=is_active('about_us')%>">
-							<%= link_to ".::О нас", '/about_us.html' %>
+							<%= link_to "О компании", '/about_us.html' %>
 						</li>
 						<li class="<%=is_active('services')%>">
-							<%= link_to ".::Услуги", '/services.html' %>
+							<%= link_to "Услуги", '/services.html' %>
 						</li>
 						<li class="<%=is_active('articles')%>">
-							<%= link_to ".::Блог", '/articles.html' %>
+							<%= link_to "Блог", '/articles.html' %>
 						</li>
 						<li class="<%=is_active('contacts')%>">
-							<%= link_to ".::Контакты", '/contacts.html' %>
+							<%= link_to "Контакты", '/contacts.html' %>
 						</li>
 						<% unless signed_in? %>
 						<li class="<%=is_active('new')%>">
-							<%= link_to ".::Вход", '/signin.html' %>
+							<%= link_to "Вход", '/signin.html' %>
 						</li>
 						<% end %>
 						<li class="<%=is_active('search')%>">

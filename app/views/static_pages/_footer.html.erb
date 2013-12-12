@@ -24,14 +24,18 @@
 				<div class="span4">
 		            <!-- Monthly Newsletter -->
 			        <div class="headline"><h3>Контакты</h3></div>	
-		                <address>
-							603000 г. Нижний Новгород <br />
-							ул. Бекетова, д. 15, оф. 4 <br />
-							<h4>Тел.: 414-89-19 </h4>
-							Email: <a href="mailto:infocom-nn@yandex.ru" class="">infocom-nn@yandex.ru</a>
-		                </address>
+		                <address itemscope itemtype="http://schema.org/Organization">
+		                	<strong itemprop="name">ООО "Инфоком-НН" </strong><br .>
+			                <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+			                <span itemprop="postalCode">603000</span>,
+			                г. <span itemprop="addressLocality">Нижний Новгород</span><br />
+							ул. <span itemprop="streetAddress">Бекетова, 15</span>, оф. 4
+							</div>
+								<h4 itemprop="telephone">Тел.: 414-89-19 </h4>
+								Email: <a href="mailto:infocom-nn@yandex.ru" itemprop="email">infocom-nn@yandex.ru</a>
 
-	                <!-- Stay Connected -->
+		                </address>
+		                <!-- Stay Connected -->
 			        <div class="headline"><h3>Присоединяйся!</h3></div>	
 	                <ul class="social-icons">
 	                    <li><a href="#" data-original-title="Feed" class="social_rss"></a></li>
