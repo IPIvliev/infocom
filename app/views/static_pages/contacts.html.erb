@@ -32,7 +32,7 @@
             <div class="headline"><h3>Контакты ООО "Инфоком-НН"</h3></div>
             <p>Отправьте своё сообщение. Наш менеджер свяжется с вами в самое ближайшее время.</p><br />
 		
-  <%= form_for @message,  :html => { :onsubmit => "yaCounter19652101.reachGoal('PHONE'); return true;" }, :url => {:controller => 'static_pages', :action => 'create'} do |f| %>
+  <%= form_for @message,  :html => { :onsubmit => "yaCounter19652101.reachGoal(PHONE); return true;" }, :url => {:controller => 'static_pages', :action => 'create'} do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
         <%= f.label :name, raw("<strong>Ваше имя</strong><span class=red>*</span>") %>
         <%= f.text_field :name, :class => "span7 border-radius-none"%>
