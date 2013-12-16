@@ -32,8 +32,8 @@
                                   data: { confirm: "Вы уверены?" } if current_user.status == 3 || current_user == @post.user %></li>
                     <% end %>
                 </ul>
-                    <div class="blog-img" itemprop="image">
-                        <%= image_tag(@post.picture_url) %>
+                    <div class="blog-img">
+                        <%= image_tag(@post.picture_url, :itemprop => "image") %>
                     </div>
                 <span itemprop="text"><%= @post.text.html_safe %></span>
 
