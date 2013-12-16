@@ -32,12 +32,9 @@
                                   data: { confirm: "Вы уверены?" } if current_user.status == 3 || current_user == @post.user %></li>
                     <% end %>
                 </ul>
-                <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-                    <meta itemprop="name" content="<%= @post.name %>">
                     <div class="blog-img" itemprop="contentUrl">
                         <%= image_tag(@post.picture_url) %>
                     </div>
-                </div>
                 <span itemprop="text"><%= @post.text.html_safe %></span>
 
             </div><!--/blog-->
