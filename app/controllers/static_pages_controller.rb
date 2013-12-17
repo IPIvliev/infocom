@@ -53,7 +53,15 @@ class StaticPagesController < ApplicationController
   end
 
   def sitemap
+    @posts = Post.all
   end
+
+  def sitemapxml
+    headers['Content-Type'] = "application/xml"
+    @posts = Post.all
+    render :template => "/static_pages/sitemap"
+  end
+
 
   def articles
     @posts = Post.paginate(page: params[:page], :per_page => 3).order("created_at DESC")
