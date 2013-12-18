@@ -53,12 +53,12 @@ class StaticPagesController < ApplicationController
   end
 
   def sitemap
-    @posts = Post.all
+    @posts = Post.order("created_at DESC")
   end
 
   def sitemapxml
     headers['Content-Type'] = "application/xml"
-    @posts = Post.all
+    @posts = Post.order("created_at DESC")
     render :template => "/static_pages/sitemap"
   end
 

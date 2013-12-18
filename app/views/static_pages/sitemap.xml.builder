@@ -3,7 +3,7 @@ xml.urlset(:xmlns => "http://www.sitemaps.org/schemas/sitemap/0.9") {
  
 xml.url do
     xml.loc (url_for :controller => 'static_pages', :action => 'index', :only_path => false)
-    xml.changefreq "monthly"
+    xml.changefreq "weekly"
     xml.priority 1.0
  end
 
