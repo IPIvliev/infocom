@@ -39,6 +39,10 @@ class RequestsController < ApplicationController
       uri = URI.parse(URI.encode(url.strip))
       response = Net::HTTP.get_response(uri)
 
+      # Добавить запись о сроках подачи заявки
+
+      @request.hists.create(:status => 3, :date => @request.created_at)
+
       flash[:success] = "Заявка успешно принята! Наш менеджер свяжется с Вами по телефону в самое ближайшее время."
       redirect_to requests_path
     else
@@ -55,7 +59,10 @@ class RequestsController < ApplicationController
     @req = Request.find(params[:id])
     if @req.update_attributes(params[:request])
       flash[:success] = "Данные обновлены."
-        redirect_to request_path(params[:id])
+
+      @req.hists.create(:status => 6, :date => @req.updated_at)
+
+        redirect_to request_path#(params[:id])
 
     else
       render 'edit'
@@ -70,25 +77,29 @@ class RequestsController < ApplicationController
 
   def fin
     @fin = Request.find(params[:id])
-    @fin.toggle!(:finish)
+    @fin.update_attribute(:finish, params[:work])
+
+    if !params[:more]
+      @fin.hists.create(:status => params[:work], :date => @fin.updated_at)
+    end
+
+    if params[:more]
+      @fin.hists.create(:status => 7, :date => @fin.updated_at)
+    end
     redirect_to requests_path
   end
 
-  def doit
-    @request = Request.find(params[:id])
-    if @request.update_attributes(:manager_id => current_user.id)
-      flash[:success] = "Данные обновлены."
-      redirect_to requests_path
-    else
-      render 'edit'
-    end
-  end
+
 
   def notdoit
     @request = Request.find(params[:id])
-    if @request.update_attributes(:manager_id => nil)
+    if @request.update_attribute(:manager_id, nil)
+      @request.update_attribute(:finish, 0)
+
+      @request.hists.create(:status => 5, :date => @request.updated_at)
+
       flash[:success] = "Данные обновлены."
-      redirect_to request_path(params[:id])
+      redirect_to requests_path#(params[:id])
     else
       render 'edit'
     end

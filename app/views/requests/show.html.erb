@@ -49,9 +49,18 @@
 
 <strong>Текст заявки:</strong>
   <div class="well well-small">
-<p><%= @request.text %></p>
+    <p><%= @request.text %></p>
   </div>
 
+<strong>История заявки:</strong>
+  <div class="well well-small">
+    <p>
+      <% @request.hists.each do |h| %>
+        <%= "#{h.period} #{h.date}".html_safe %><br>
+
+      <% end %>
+    </p>
+  </div>
 
 
 <strong>Исполнитель:</strong>
@@ -72,7 +81,7 @@
   <p> Исполнитель не назначен. </p>
       <% if current_user.admin_manager? %>
           <%= form_for @request, :html => { :class => "ruser"} do |f| %>
-            <%= f.collection_select :manager_id, User.where(:status => 1), :id, :name %>
+            <%= f.collection_select :manager_id, User.where('status = ? OR status = ?', 1, 3), :id, :name %>
             <%= f.submit "назначить", :class => "selectuser" %>
           <% end %>
       <% end %>

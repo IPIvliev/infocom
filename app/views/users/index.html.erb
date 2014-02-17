@@ -28,15 +28,19 @@
         </section>
       </aside> 
       <div class="span9">
+        <div class="table">
+          <div class="thead row">
+              <span class="span1">Фото</span>
+              <span class="span3">ФИО</span>
+              <span class="span2">Подано заявок</span>
+              <span class="span2">Телефон</span>
+              <span class="span2">Организация</span>
+              <span class="span3">Статус</span>
+          </div>
+          <%= render @users %>
+          <%= will_paginate %>
+        </div> 
 
-
-<%= will_paginate %>
-
-<ul class="users">
-  <%= render @users %>
-</ul>
-
-<%= will_paginate %>
 
 </div></div></div>
 <% end %>

@@ -4,9 +4,25 @@
 $green: #72C02C;
 $red: #960018;
 $blue: #0015ff;
+$yellow: #ffbf00;
 
 .all {
 	width: 100%;
+}
+
+.green {
+	color: $green;
+}
+
+.yellow {
+	color: $yellow;
+}
+
+.red {
+	color: $red;
+}
+.blue {
+	color: $blue;
 }
 
 .avainrequest {
@@ -83,7 +99,8 @@ $blue: #0015ff;
 
 
 .ruser {
-	width: 120px;
+	width: 100%;
+	text-align: center;
 	select {
 		width: 120px;
 		display: block;
@@ -142,6 +159,10 @@ $blue: #0015ff;
 			padding-top: 15px;
 				.green {
 					color: $green;
+				}
+
+				.yellow {
+					color: $yellow;
 				}
 
 				.red {

@@ -1,5 +1,4 @@
-
-<% provide(:title, 'Сообщение в блоге') %>
+<% provide(:title, @post.name) %>
 
 <!--=== Breadcrumbs ===-->
 <div class="row-fluid breadcrumbs margin-bottom-20">
@@ -20,8 +19,10 @@
 
     <div class="row-fluid">
         <div class="span9">
-<div class="blog margin-bottom-30">
-            	<h3><%= @post.name %></h3>
+            <div class="blog margin-bottom-30" itemscope itemtype="http://schema.org/NewsArticle">
+                <meta itemprop="genre" content="Новости компании">
+            	<h3 itemprop="headline"><%= @post.name %></h3>
+                <meta itemprop="author" content="Инфоком-НН">
             	<ul class="unstyled inline blog-info">
                 	<li><i class="icon-calendar"></i> <%= Russian::strftime(@post.created_at, "%d %B %Y") %></li>
                 	<li><i class="icon-user"></i> <%= @post.user.name %></li>
@@ -30,18 +31,30 @@
                     <li><i class="icon-trash"></i> <%= link_to "Удалить", @post, method: :delete, :class => 'red',
                                   data: { confirm: "Вы уверены?" } if current_user.status == 3 || current_user == @post.user %></li>
                     <% end %>
+                    <li><!-- Поместите этот тег туда, где должна отображаться кнопка +1. -->
+<div class="g-plusone" data-size="small" data-annotation="inline" data-width="300"></div>
+
+<!-- Поместите этот тег за последним тегом виджета кнопка +1. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ru'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+</li>
                 </ul>
-
-                <div class="blog-img"><%= image_tag(@post.picture_url) %></div>
-
-                <%= @post.text.html_safe %>
+                    <div class="blog-img">
+                        <%= image_tag(@post.picture_url, :itemprop => "image") %>
+                    </div>
+                <span itemprop="text"><%= @post.text.html_safe %></span>
 
             </div><!--/blog-->
         </div>
 
         <%= render '/static_pages/right_column' %>
+
     </div>
-
-
-
 </div>

@@ -1,9 +1,12 @@
 <% provide(:title, 'ИТ-аутсорсинг') %>
 
 <!--=== Breadcrumbs ===-->
+<div itemscope itemtype="http://schema.org/Article">
+    <meta itemprop="genre" content="Услуги">
+    <meta itemprop="author" content="Инфоком-НН">
 <div class="row-fluid breadcrumbs margin-bottom-40">
 	<div class="container">
-        <h1 class="pull-left">Обслуживание компьютеров в Нижнем Новгороде</h1>
+        <h1 class="pull-left" itemprop="headline">Обслуживание компьютеров в Нижнем Новгороде</h1>
         <ul class="pull-right breadcrumb">
             <li><a href="index.html">Главная</a> <span class="divider">/</span></li>
             <li><%= link_to "Услуги", '/services.html' %> <span class="divider">/</span></li>
@@ -24,10 +27,10 @@
         <!-- Who We Are -->
         <div class="span9">
 
-            <p><img class="pull-left lft-img-margin img-width-200" src="/assets/others/vg.jpg" alt="" />
+            <p><img class="pull-left lft-img-margin img-width-200" src="/assets/others/vg.jpg" alt="Владимир Горшенин" />
 <h3>Что такое IT-аутсорсинг?</h3>
 
-<p>Абонентское обслуживание компьютеров в офисе – одна из самых распространенных разновидностей IT-аутсорсинга. Как правило, в это понятие включают и обеспечение информационной безопасности, и проектирование локальной сети, и установку программного обеспечения: вообще всё, что касается информационной инфраструктуры организации.</p>
+<p itemprop="description">Абонентское обслуживание компьютеров в офисе – одна из самых распространенных разновидностей IT-аутсорсинга. Как правило, в это понятие включают и обеспечение информационной безопасности, и проектирование локальной сети, и установку программного обеспечения: вообще всё, что касается информационной инфраструктуры организации.</p>
 
 <h3>Что входит в портфель IT-аутсорсинга в ООО «Инфоком-НН»:</h3>
 
@@ -92,4 +95,5 @@
     </div>
 <%= render '/shared/clients' %>
 
+</div>
 </div>

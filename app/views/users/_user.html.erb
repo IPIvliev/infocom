@@ -1,30 +1,50 @@
-<li>
-  <% if user.avatar? %>
-    <%= image_tag(user.avatar_url, height: '52', width: '52') %>
-  <% else %>
-    <%= image_tag('/assets/unnamed.jpg', width: '52', height: '52') %>
-  <% end %>
+<div class="row tbody">
 
-  <%= link_to user.name, user %> |
-  <%= user.requests.count %> |
-  <%= user.email %> |
-  <%= user.agent.name %> |
-  <%= write_user_status(user.status) %>
+  <span class="span1">
+    <% if user.avatar? %>
+      <%= image_tag(user.avatar_url, height: '40', width: '40') %>
+    <% else %>
+      <%= image_tag('/assets/unnamed.jpg', width: '40', height: '40') %>
+    <% end %>
+  </span>
 
-  <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "delete", user, method: :delete,
-                                  data: { confirm: "Вы уверены?" } %>
-  <% end %>
-  <% if current_user.admin_manager? && !current_user?(user) %>
-	  <%= form_for user, :url => changestatus_user_path(user), :html => { :class => "inbody"} do |f| %>
-      <% if current_user.admin? %>
-        <%= f.select :status, [['Пользователь', 0], ['Инженер', 1], ['Менеджер', 2], ['Администратор', 3]]  %>
-        <%= f.submit "Назначить", :class => "submit" %>
-      <% end %>
-      <% if current_user.manager? && !user.admin_manager? %>
-        <%= f.select :status, [['Пользователь', 0], ['Инженер', 1]] %>
-        <%= f.submit "Назначить", :class => "submit" %>
+  <span class="span3">
+    <%= link_to user.name, user %>
+      | <%= write_user_status(user.status) %>
+        <% if current_user.admin? && !current_user?(user) %>
+      | <%= link_to "delete", user, method: :delete,
+                                    data: { confirm: "Вы уверены?" } %>
+
+    <% end %>
+  </span>
+
+  <span class="span2">
+    <% if user.admin_engineer? %>
+    <strong>Подано заявок:</strong> <%= user.requests.count %> <br>
+    Заявок в работе: <%= Request.where('manager_id = ? AND (finish = ? OR finish = ?)', user, 0, 1).count %><br>
+    Заявок выполнено: <%= Request.where('manager_id = ? AND finish = ?', user, 2).count %>
+    <% else %>
+    <strong>Подано заявок:</strong> <%= user.requests.count %> <br>
+    <% end %>
+  </span>
+  <span class="span2">
+    <%= user.phone %>
+  </span>
+  <span class="span2">
+    <%= user.agent.name %>
+  </span>
+  <span class="span3">
+    <% if current_user.admin_manager? && !current_user?(user) %>
+  	  <%= form_for user, :url => changestatus_user_path(user), :html => { :class => "ruser"} do |f| %>
+        <% if current_user.admin? %>
+          <%= f.select :status, [['Пользователь', 0], ['Инженер', 1], ['Менеджер', 2], ['Администратор', 3]]  %>
+          <%= f.submit "Назначить", :class => "selectuser" %>
+        <% end %>
+        <% if current_user.manager? %>
+          <%= f.select :status, [['Пользователь', 0], ['Инженер', 1]] %>
+          <%= f.submit "Назначить", :class => "selectuser" %>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
-</li>
+  </span>
+</div>
