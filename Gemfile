@@ -19,6 +19,9 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'carrierwave'
 gem 'rmagick', '2.13.2'
 
+# Work with API
+gem  'rest-client'
+
 #mail
 #gem 'mail'
 

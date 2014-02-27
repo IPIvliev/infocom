@@ -18,6 +18,11 @@
 
 </div>
 
+<% if current_user.admin? %>
+	<hr>
+		<strong>Балланс SMS:</strong> <%= balance %> руб.
+<% end %>
+
 <hr>
 <span>Организация:
     <strong>

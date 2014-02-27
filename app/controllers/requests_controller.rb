@@ -30,14 +30,12 @@ class RequestsController < ApplicationController
 
       require 'net/http'
 
-      @phone = current_user.phone
-      @name = current_user.agent.name
+      phone = current_user.phone
+      name = current_user.agent.name
 
-       t = User.where('status = ? OR status = ?', 3, 2).select("phone").map(&:phone).join(',')
+      tel = User.where('status = ? OR status = ?', 3, 2).select("phone").map(&:phone).join(',')
 
-      url = "http://sms.ru/sms/send?api_id=9d3359eb-9224-2384-5d06-1118975a2cd2&to="+t+"&text=Инфоком-НН (новая заявка) от "+@name+" "+@phone
-      uri = URI.parse(URI.encode(url.strip))
-      response = Net::HTTP.get_response(uri)
+      RestClient.post("http://sms.ru/sms/send", :api_id => "9d3359eb-9224-2384-5d06-1118975a2cd2", :to => tel, :text => "Инфоком-НН (новая заявка) от #{name} #{phone}")
 
       # Добавить запись о сроках подачи заявки
 

@@ -17,5 +17,9 @@ module UsersHelper
     return "<strong class=user>Пользователь</strong>".html_safe if status == 0
   end
 
+  def balance
+      hash = RestClient.get("http://sms.ru/my/balance?api_id=9d3359eb-9224-2384-5d06-1118975a2cd2")
+      hash[4..-1]
+  end
 
 end
