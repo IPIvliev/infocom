@@ -41,7 +41,7 @@ class RequestsController < ApplicationController
 
       @request.hists.create(:status => 3, :date => @request.created_at)
 
-      flash[:success] = "Заявка успешно принята! Наш менеджер свяжется с Вами по телефону в самое ближайшее время."
+      flash[:success] = "#{tel} Заявка успешно принята! Наш менеджер свяжется с Вами по телефону в самое ближайшее время."
       redirect_to requests_path
     else
       flash[:error] = "Заявка отклонено. Вы не заполнили одно из обязательных полей!"
