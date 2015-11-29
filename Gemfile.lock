@@ -50,6 +50,7 @@ GEM
     coffee-script-source (1.6.3)
     daemons (1.1.9)
     erubis (2.7.0)
+    eventmachine (1.0.0)
     eventmachine (1.0.0-x86-mingw32)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -106,6 +107,7 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sqlite3 (1.3.7)
     sqlite3 (1.3.7-x86-mingw32)
     thin (1.5.0)
       daemons (>= 1.0.9)
@@ -124,6 +126,7 @@ GEM
     yaml_db (0.2.3)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES
